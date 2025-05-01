@@ -10,76 +10,128 @@
   <title>Frontend quiz app</title>
 </head>
 <body>
-  <main>
-    <header class="theme">
-      <img src="images/icon-sun-dark.svg" alt="" id="theme__sun--dark">
-      <label class="theme__toggle">
-        <input type="checkbox" id="theme__switch" />
-        <span class="slider"></span>
-      </label>
-      <img src="images/icon-moon-dark.svg" alt="" id="theme__moon--dark">
-    </header> <!--closes theme-toggle-->
   
-  <!-- Quiz menu start -->
-
-  <section class="menu">
-
-    <div class="menu__welcome">
-      <h1 class="menu__title">Welcome to the Frontend Quiz!</h1>
-      <p class="menu__text">Pick a subject to get started.</p>
+  <header>
+    <div class="subject hide">
+      <picture class="subject__icon">
+        <img src="" alt="">
+      </picture>
+      <p class="subject__text"></p>
     </div>
 
-    <ul class="menu__options">
-      <li class="menu__option">
-        <picture class="menu__option-icon">
-          <img src="images/icon-html.svg" alt="">
-        </picture>
-        <p class="menu__option">HTML</p>
-      </li>
-      <li class="menu__option">
-        <picture class="menu__option-icon">
-          <img src="images/icon-css.svg" alt="">
-        </picture>
-        <p class="menu__option">CSS</p>
-      </li>
-      <li class="menu__option">
-        <picture class="menu__option-icon">
-          <img src="images/icon-js.svg" alt="">
-        </picture>
-        <p class="menu__option">JavaScript</p>
-      </li>
-      <li class="menu__option">
-        <picture class="menu__option-icon">
-          <img src="images/icon-accessibility.svg" alt="">
-        </picture>
-        <p class="menu__option">Accessibility</p>
-      </li>
-    </ul>
-    
-  </section>
+      <div class="theme">
+        <img src="images/icon-sun-dark.svg" alt="" id="theme__sun--dark">
+        <label class="theme__toggle">
+          <input type="checkbox" id="theme__switch" />
+          <span class="slider"></span>
+        </label>
+        <img src="images/icon-moon-dark.svg" alt="" id="theme__moon--dark">
+      </div>
+  </header> <!--closes theme-toggle-->
+  
+  <!-- Quiz menu start -->
+  <main>
+    <section class="menu">
+
+      <div class="menu__welcome">
+        <h1 class="menu__title">Welcome to the Frontend Quiz!</h1>
+        <p class="menu__text">Pick a subject to get started.</p>
+      </div>
+
+      <ul class="menu__options">
+        <li class="menu__option">
+          <picture class="menu__option-icon">
+            <img src="images/icon-html.svg" alt="">
+          </picture>
+          <p class="menu__option">HTML</p>
+        </li>
+        <li class="menu__option">
+          <picture class="menu__option-icon">
+            <img src="images/icon-css.svg" alt="">
+          </picture>
+          <p class="menu__option">CSS</p>
+        </li>
+        <li class="menu__option">
+          <picture class="menu__option-icon">
+            <img src="images/icon-js.svg" alt="">
+          </picture>
+          <p class="menu__option">JavaScript</p>
+        </li>
+        <li class="menu__option">
+          <picture class="menu__option-icon">
+            <img src="images/icon-accessibility.svg" alt="">
+          </picture>
+          <p class="menu__option">Accessibility</p>
+        </li>
+      </ul>
+
+    </section>
 
   <!-- Quiz menu end -->
 
   <!-- Quiz question start -->
 
-  Question <!-- number --> of 10
+  <section class="question">
+    <div class="question__content">
+      <div class="question__card">
+        <p class="question__number">Question <span id="question__index"></span> of 10</p>
+        <p class="question__text"></p>
+        <div class="question__progress"></div>
+      </div><!--closes question__card-->
+      <ul class="question__options">
+        <li class="question__option">
+          <button class="question__button">A</button>
+          <p class="question__opt-txt"></p>
+        </li>
+        <li class="question__option">
+          <button class="question__button">B</button>
+          <p class="question__opt-txt"></p>
+        </li>
+        <li class="question__option">
+          <button class="question__button">C</button>
+          <p class="question__opt-txt"></p>
+        </li>
+        <li class="question__option">
+          <button class="question__button">D</button>
+          <p class="question__opt-txt"></p>
+        </li>
+      </ul>
+    </div><!--colses qustion__content-->
+    <div class="question__submit">
+      <button class="question__submit-btn">Submit Answer</button>
+      <p id="question__submit-error" class="hide"></p>
+    </div>
+  </section>
 
-  A
-  B
-  C
-  D
-
-  Submit answer
 
   <!-- Quiz question end -->
 
   <!-- Quiz completed start -->
-
-  Quiz completed
-  You scored...
-
-  <!-- score --> out of 10
-
+<section class="complete">
+  <div class="complete__content">
+    <div class="complete__text">
+      <p class="complete__text-a"></p>
+      <p class="complete__text-b"></p>
+    </div>
+    <div class="complete__summary">
+      <div class="complete__subject">
+        <picture class="complete__subject-icon">
+          <img src="" alt="">
+        </picture>
+        <p class="complete__subject-text"></p>
+      </div>
+      <div class="complete__numbers">
+        <p class="complete__score">
+          <span id="final-score"></span>
+        </p>
+        <p class="complete__goal">out of 10</p>
+      </div>
+    </div><!--closes complete__summary-->
+  </div><!--closes complete__content-->
+  <div class="complete__again">
+    <button class="complete__again-btn">Play Again</button>
+  </div>
+</section>
   <!-- Quiz completed end -->
 
   </main>
