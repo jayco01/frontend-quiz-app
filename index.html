@@ -10,16 +10,53 @@
   <title>Frontend quiz app</title>
 </head>
 <body>
-
+  <main>
+    <header class="theme">
+      <img src="images/icon-sun-dark.svg" alt="" id="theme__sun--dark">
+      <label class="theme__toggle">
+        <input type="checkbox" id="theme__switch" />
+        <span class="slider"></span>
+      </label>
+      <img src="images/icon-moon-dark.svg" alt="" id="theme__moon--dark">
+    </header> <!--closes theme-toggle-->
+  
   <!-- Quiz menu start -->
 
-  Welcome to the Frontend Quiz!
-  Pick a subject to get started.
+  <section class="menu">
 
-  HTML
-  CSS
-  JavaScript
-  Accessibility
+    <div class="menu__welcome">
+      <h1 class="menu__title">Welcome to the Frontend Quiz!</h1>
+      <p class="menu__text">Pick a subject to get started.</p>
+    </div>
+
+    <ul class="menu__options">
+      <li class="menu__option">
+        <picture class="menu__option-icon">
+          <img src="images/icon-html.svg" alt="">
+        </picture>
+        <p class="menu__option">HTML</p>
+      </li>
+      <li class="menu__option">
+        <picture class="menu__option-icon">
+          <img src="images/icon-css.svg" alt="">
+        </picture>
+        <p class="menu__option">CSS</p>
+      </li>
+      <li class="menu__option">
+        <picture class="menu__option-icon">
+          <img src="images/icon-js.svg" alt="">
+        </picture>
+        <p class="menu__option">JavaScript</p>
+      </li>
+      <li class="menu__option">
+        <picture class="menu__option-icon">
+          <img src="images/icon-accessibility.svg" alt="">
+        </picture>
+        <p class="menu__option">Accessibility</p>
+      </li>
+    </ul>
+    
+  </section>
 
   <!-- Quiz menu end -->
 
@@ -45,5 +82,6 @@
 
   <!-- Quiz completed end -->
 
+  </main>
 </body>
 </html>
