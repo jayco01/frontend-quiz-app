@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+:root {
+    /* COLORS */
+    --clr-white: #ffffff;
+    --clr-black: #000000;
+
+    --clr-grey500: #626c7f;
+    --clr-grey50: #f4f6fa;
+
+    --clr-blue950: #2d3949;
+    --clr-blue900: #313e51;
+    --clr-blue850: #3b4d66;
+    --clr-blue500: #306aff;
+    --clr-blue300: #abc1e1;
+    --clr-blue100: #edf1f9;
+    --clr-blue50: #ebf0ff;
+
+    --clr-green500: #2fd887;
+    --clr-green100: #e0fdef;
+
+    --clr-purple600: #a729f5;
+    --clr-purple100: #f6e7ff;
+
+    --clr-orange400: #ff7e35;
+    --clr-orange50: #fff5ed;
+
+    --clr-red500: #ee5454;
+
+    /* TYPOGRAPHY */
+    --font-family-rubik: "Rubik", sans-serif;
+
+    --fs-144px: 9rem;
+    --fs-64px: 4rem;
+    --fs-36px: 2.25rem;
+    --fs-28px: 1.75rem;
+    --fs-24px: 1.5rem;
+    --fs-20px: 1.25rem;
+
+    --fs-88px: 5.5rem;
+    --fs-40px: 2.5rem;
+    --fs-18px: 1.125rem;
+    --fs-14px: 0.875rem;
+
+    --lh-100: 100%;
+    --lh-120: 120%;
+    --lh-150: 150%;
+
+    --fw-500: 500;
+    --fw-300: 300;
+
+    --spacing-8px: 0.5rem;
+    --spacing-16px: 1rem;
+    --spacing-24px: 1.5rem;
+    --spacing-32px: 2rem;
+    --spacing-40px: 2.5rem;
+    --spavign-48px: 3rem;
+    --spacing-64px: 4rem;
+    --spacing-128px: 8rem;
+    --spacing-144px: 9rem;
+    --spacing-184px: 11.5rem;
+}
