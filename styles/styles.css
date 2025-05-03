@@ -108,7 +108,7 @@ header {
     align-items: center;
     gap: var(--spacing-8px);
     margin-left: auto;
-    width: 5rem;
+    width: clamp(5rem, 11vw, 8rem);
 }
 
 .theem__icon {
@@ -181,14 +181,14 @@ main {
 }
 .menu__title h1 {
     font-weight: var(--fw-300);
-    font-size: var(--fs-40px);
+    font-size: clamp(var(--fs-40px), 7vw, var(--fs-64px));
     line-height: var(--lh-100);
     letter-spacing: 0%;
 }
 
 .menu__title h2 {
     font-weight: var(--fw-500);
-    font-size: var(--fs-40px);
+    font-size: clamp(var(--fs-40px), 7vw, var(--fs-64px));
     line-height: var(--lh-100);
     letter-spacing: 0%;
 }
@@ -196,7 +196,7 @@ main {
 .menu__text {
     font-weight: var(--fw-400);
     font-style: italic;
-    font-size: var(--fs-14px);
+    font-size: clamp(var(--fs-14px), 2.2vw, var(--fs-20px));
     line-height: var(--lh-150);
     letter-spacing: 0%;
     color: var(--clr-blue300);
@@ -219,37 +219,47 @@ main {
     box-shadow: 0px 16px 40px 0px #313E5124;
 }
 
+.menu__option-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu__option-icon img{
+    width: 100%;
+    height: 100%;
+}
+
 #html-icon {
-    width: var(--spacing-40px);
-    height: var(--spacing-40px);
+    width: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
+    height: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
     background-color: var(--clr-orange50);
     border-radius: 0.375rem;
 }
 
 #css-icon {
-    width: var(--spacing-40px);
-    height: var(--spacing-40px);
+    width: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
+    height: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
     background-color: var(--clr-green100);
     border-radius: 0.375rem;
 }
 
 #js-icon {
-    width: var(--spacing-40px);
-    height: var(--spacing-40px);
+    width: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
+    height: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
     background-color: var(--clr-blue100);
     border-radius: 0.375rem;
 }
 
 #access-icon {
-    width: var(--spacing-40px);
-    height: var(--spacing-40px);
+    width: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
+    height: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
     background-color: var(--clr-purple100);
     border-radius: 0.375rem;
 }
 
 .menu__option {
     font-weight: var(--fw-500);
-    font-size: var(--fs-18px);
+    font-size: clamp(var(--fs-18px),3.1,var(--fs-28px));
     line-height: var(--lh-100);
     letter-spacing: 0%;
     margin: 0%;
