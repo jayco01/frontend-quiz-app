@@ -9,23 +9,24 @@
   <script src="scripts/main.js" defer></script>
   <title>Frontend quiz app</title>
 </head>
-<body>
+<body class="dark">
   
   <header>
     <div class="subject hide">
       <picture class="subject__icon">
-        <img src="" alt="">
+        <img src="images/icon-accessibility.svg" alt="">
       </picture>
-      <p class="subject__text"></p>
+      <p class="subject__text">Accessibility</p>
     </div>
 
       <div class="theme">
-        <img src="images/icon-sun-dark.svg" alt="" id="theme__sun--dark">
+        <img src="images/icon-sun-light.svg" alt="" id="theme__sun--dark" class="theme__icon">
         <label class="theme__toggle">
+          <p class="slider--light"></p>
           <input type="checkbox" id="theme__switch" />
-          <span class="slider"></span>
+          <p class="slider--dark"></p>
         </label>
-        <img src="images/icon-moon-dark.svg" alt="" id="theme__moon--dark">
+        <img src="images/icon-moon-light.svg" alt="" id="theme__moon--dark" class="theme__icon">
       </div>
   </header> <!--closes theme-toggle-->
   
@@ -69,7 +70,7 @@
   <!-- Quiz menu end -->
 
   <!-- Quiz question start -->
-  <section class="question">
+  <section class="question hide">
     <div class="question__content">
 
       <div class="question__card">
@@ -108,7 +109,7 @@
   <!-- Quiz question end -->
 
   <!-- Quiz completed start -->
-<section class="complete">
+<section class="complete hide">
   <div class="complete__content">
 
     <div class="complete__text">
@@ -137,7 +138,7 @@
     <button class="complete__again-btn">Play Again</button>
   </div>
   
-</section>
+</section> <!--closes complete-->
   <!-- Quiz completed end -->
 
   </main>

@@ -50,6 +50,7 @@
     --fw-500: 500;
     --fw-300: 300;
 
+    /* SPACING */
     --spacing-8px: 0.5rem;
     --spacing-16px: 1rem;
     --spacing-24px: 1.5rem;
@@ -60,4 +61,89 @@
     --spacing-128px: 8rem;
     --spacing-144px: 9rem;
     --spacing-184px: 11.5rem;
+}
+
+
+
+body {
+    background-repeat: no-repeat;
+    font-family: var(--font-family-rubik);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+body.dark {
+    color: var(--clr-white);
+    background-color: var(--clr-blue900);
+    background-image: url("../images/pattern-background-mobile-dark.svg");
+}
+
+header {
+    display: flex;
+    align-items:center;
+    padding: var(--spacing-16px) var(--spacing-24px);
+    justify-content: space-between;
+    width: 100%;
+}
+
+.subject {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-16px);
+}
+
+.theme {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-8px);
+    margin-left: auto;
+}
+
+.theem__icon {
+    height: var(--spacing-16px);
+    width: var(--spacing-16px);
+    padding: 0.25rem;
+}
+
+.theme__toggle input {
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+}
+
+.theme__toggle {
+    position: relative;
+    border-radius: 999px;
+    padding: 0.25rem;
+    background-color: var(--clr-purple600);
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.slider--light {
+    background-color: var(--clr-purple600);
+    width: 12px;
+    height: 12px;
+    border-radius: 99px;
+}
+
+.slider--dark {
+    background-color: var(--clr-white);
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 99px;
+}
+
+.hide {
+    display: none ;
 }
