@@ -43,6 +43,10 @@
     --fs-18px: 1.125rem;
     --fs-14px: 0.875rem;
 
+    --fluid-fs-40x64: clamp(var(--fs-40px),7vw,var(--fs-64px));
+    --fluid-fs-14x20: clamp(var(--fs-14px), 2.2vw, var(--fs-20px));
+    --fluid-fs-18x28: clamp(var(--fs-18px),3.1vw,var(--fs-28px));
+
     --lh-100: 100%;
     --lh-120: 120%;
     --lh-150: 150%;
@@ -62,6 +66,9 @@
     --spacing-128px: 8rem;
     --spacing-144px: 9rem;
     --spacing-184px: 11.5rem;
+
+    --fluid-spacing-8x16: clamp(var(--spacing-8px), 1.75vw, var(--spacing-16px));
+    --fluid-spacing-40x56: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
 }
 
 
@@ -106,14 +113,14 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: var(--spacing-8px);
+    gap: var(--fluid-spacing-8x16);
     margin-left: auto;
     width: clamp(5rem, 11vw, 8rem);
 }
 
 .theem__icon {
-    height: var(--spacing-16px);
-    width: var(--spacing-16px);
+    height: clamp(var(--spacing-16px), 2.5rem, var(--spacing-24px));
+    width: clamp(var(--spacing-16px), 2.5rem, var(--spacing-24px));
     padding: 0.25rem;
 }
 
@@ -139,15 +146,15 @@ header {
 
 .slider--light {
     background-color: var(--clr-purple600);
-    width: 12px;
-    height: 12px;
+    width: clamp(0.75rem,2.2vw,1.25rem);
+    height: clamp(0.75rem,2.2vw,1.25rem);
     border-radius: 99px;
 }
 
 .slider--dark {
     background-color: var(--clr-white);
-    width: 0.75rem;
-    height: 0.75rem;
+    width: clamp(0.75rem,2.2vw,1.25rem);
+    height: clamp(0.75rem,2.2vw,1.25rem);
     border-radius: 99px;
 }
 
@@ -181,14 +188,14 @@ main {
 }
 .menu__title h1 {
     font-weight: var(--fw-300);
-    font-size: clamp(var(--fs-40px), 7vw, var(--fs-64px));
+    font-size: var(--fluid-fs-40x64);
     line-height: var(--lh-100);
     letter-spacing: 0%;
 }
 
 .menu__title h2 {
     font-weight: var(--fw-500);
-    font-size: clamp(var(--fs-40px), 7vw, var(--fs-64px));
+    font-size: var(--fluid-fs-40x64);
     line-height: var(--lh-100);
     letter-spacing: 0%;
 }
@@ -196,7 +203,7 @@ main {
 .menu__text {
     font-weight: var(--fw-400);
     font-style: italic;
-    font-size: clamp(var(--fs-14px), 2.2vw, var(--fs-20px));
+    font-size:  var( --fluid-fs-14x20);
     line-height: var(--lh-150);
     letter-spacing: 0%;
     color: var(--clr-blue300);
@@ -230,36 +237,36 @@ main {
 }
 
 #html-icon {
-    width: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
-    height: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
+    width: var(--fluid-spacing-40x56);
+    height: var(--fluid-spacing-40x56);
     background-color: var(--clr-orange50);
     border-radius: 0.375rem;
 }
 
 #css-icon {
-    width: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
-    height: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
+    width: var(--fluid-spacing-40x56);
+    height: var(--fluid-spacing-40x56);
     background-color: var(--clr-green100);
     border-radius: 0.375rem;
 }
 
 #js-icon {
-    width: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
-    height: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
+    width: var(--fluid-spacing-40x56);
+    height: var(--fluid-spacing-40x56);
     background-color: var(--clr-blue100);
     border-radius: 0.375rem;
 }
 
 #access-icon {
-    width: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
-    height: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
+    width: var(--fluid-spacing-40x56);
+    height: var(--fluid-spacing-40x56);
     background-color: var(--clr-purple100);
     border-radius: 0.375rem;
 }
 
 .menu__option {
     font-weight: var(--fw-500);
-    font-size: clamp(var(--fs-18px),3.1,var(--fs-28px));
+    font-size: var(--fluid-fs-18x28);
     line-height: var(--lh-100);
     letter-spacing: 0%;
     margin: 0%;
