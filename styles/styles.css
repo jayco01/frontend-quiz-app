@@ -99,7 +99,7 @@ header {
     padding: var(--spacing-16px) var(--spacing-24px);
     justify-content: space-between;
     box-sizing: border-box;
-    max-width:clamp(23.438rem, 100vw, 72.5rem);
+    max-width:clamp(23.438rem, 85vw, 72.5rem);
     width: 100%;
 }
 
@@ -164,7 +164,7 @@ header {
 }
 
 main {
-    max-width: clamp(23.438rem, 100vw, 72.5rem);
+    max-width: clamp(23.438rem, 85vw, 72.5rem);
     width: 100%;
     padding: var(--spacing-32px) var(--spacing-24px);
     box-sizing: border-box;
@@ -282,6 +282,18 @@ main {
     body.dark {
         background-image: url("../images/pattern-background-tablet-dark.svg");
     }
+
+    header {
+        margin: 3.38rem 4rem;
+    } 
+
+    .menu {
+        gap: 4rem;
+    }
+
+    .menu__option {
+        width: clamp(20.4375rem, 70vw, 40rem);
+    }
 }
 
 @media (min-width: 1080px) {
@@ -290,8 +302,7 @@ main {
     }
 
     header {
-        margin: 6.06rem 6rem 2.5rem 8.94rem;
-
+        margin: 6.06rem 5rem 2.5rem 5rem;
     }
 
     main{
