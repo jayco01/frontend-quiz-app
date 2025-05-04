@@ -12,7 +12,7 @@
 <body class="dark">
   
   <header>
-    <div class="subject hide">
+    <div class="subject">
       <picture class="subject__icon">
         <img src="images/icon-accessibility.svg" alt="">
       </picture>
@@ -32,7 +32,7 @@
   
   <!-- Quiz menu start -->
   <main>
-    <section class="menu">
+    <section class="menu hide">
 
       <div class="menu__welcome">
         <div class="menu__title">
@@ -73,31 +73,31 @@
   <!-- Quiz menu end -->
 
   <!-- Quiz question start -->
-  <section class="question hide">
+  <section class="question">
     <div class="question__content">
 
       <div class="question__card">
-        <p class="question__number">Question <span id="question__index"></span> of 10</p>
-        <p class="question__text"></p>
-        <div class="question__progress"></div>
+        <p class="question__number">Question <span id="question__index">6</span> of 10</p>
+        <p class="question__text">Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for normal text?</p>
+        <div class="question__progress">progress bar</div>
       </div><!--closes question__card-->
 
       <ul class="question__options">
         <li class="question__option">
           <button class="question__button">A</button>
-          <p class="question__opt-txt"></p>
+          <p class="question__opt-txt">4.5 : 1</p>
         </li>
         <li class="question__option">
           <button class="question__button">B</button>
-          <p class="question__opt-txt"></p>
+          <p class="question__opt-txt">3 : 1</p>
         </li>
         <li class="question__option">
           <button class="question__button">C</button>
-          <p class="question__opt-txt"></p>
+          <p class="question__opt-txt">2.5 : 1</p>
         </li>
         <li class="question__option">
           <button class="question__button">D</button>
-          <p class="question__opt-txt"></p>
+          <p class="question__opt-txt">5 : 1</p>
         </li>
       </ul>
 
