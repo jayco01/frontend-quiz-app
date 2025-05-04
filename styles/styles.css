@@ -352,6 +352,22 @@ main {
     box-sizing: border-box;
 }
 
+.question__progress {
+    width: 100%;
+    background-color: var(--clr-blue850);
+    border-radius: 999px;
+    overflow: hidden;
+    height: var(--spacing-16px);
+}
+
+.question__progress-bar {
+    height: 100%;
+    background-color: var(--clr-purple600);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 999px;
+}
+
 @media (min-width: 600px) and (max-width: 1079px) {
     body.dark {
         background-image: url("../images/pattern-background-tablet-dark.svg");
