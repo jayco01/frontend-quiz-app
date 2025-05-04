@@ -69,6 +69,7 @@
 
     --fluid-spacing-8x16: clamp(var(--spacing-8px), 1.75vw, var(--spacing-16px));
     --fluid-spacing-40x56: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
+    --fluid-spacing-40x128: clamp(var(--spacing-40px), 14vw, var(--spacing-128px));
 }
 
 
@@ -172,14 +173,14 @@ main {
 .menu {
     display: flex;
     flex-direction: column;
-    gap:var(--spacing-40px);
+    gap: var(--fluid-spacing-40x128);
     width: 100%;
 }
 
 .menu__welcome {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-16px);
+    gap: clamp(var(--spacing-16px), 5.25vw, 3rem)
 }
 
 .menu__title {
@@ -187,11 +188,13 @@ main {
     flex-direction: column;
     gap: var(--spacing-8px);
 }
+
 .menu__title h1 {
     font-weight: var(--fw-300);
     font-size: var(--fluid-fs-40x64);
     line-height: var(--lh-100);
     letter-spacing: 0%;
+    white-space: nowrap;
 }
 
 .menu__title h2 {
@@ -199,6 +202,7 @@ main {
     font-size: var(--fluid-fs-40x64);
     line-height: var(--lh-100);
     letter-spacing: 0%;
+    white-space: nowrap;
 }
 
 .menu__text {
@@ -271,28 +275,34 @@ main {
     line-height: var(--lh-100);
     letter-spacing: 0%;
     margin: 0%;
+    width: clamp(20.4375rem, 61.7vw, 32.25rem);
 }
 
 @media (min-width: 600px) and (max-width: 1079px) {
+    body.dark {
+        background-image: url("../images/pattern-background-tablet-dark.svg");
+    }
 }
 
 @media (min-width: 1080px) {
+    body.dark {
+        background-image: url("../images/pattern-background-desktop-dark.svg");
+    }
+
+    header {
+        margin: 6.06rem 6rem 2.5rem 8.94rem;
+
+    }
+
     main{
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: start;
         height: 100vh;
-    }
-    .theme {
-        position: absolute;
-        top: 6rem;
-        left: 73.063rem;
     }
 
     .menu {
         flex-direction: row;
-        gap: var(--spacing-128px);
     }
 
     .menu__welcome {
