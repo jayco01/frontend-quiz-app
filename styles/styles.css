@@ -46,6 +46,7 @@
     --fluid-fs-40x64: clamp(var(--fs-40px),7vw,var(--fs-64px));
     --fluid-fs-14x20: clamp(var(--fs-14px), 2.2vw, var(--fs-20px));
     --fluid-fs-18x28: clamp(var(--fs-18px),3.1vw,var(--fs-28px));
+    --fluid-fs-20x36: clamp(var(--fs-20px), 4vw, var(--fs-36px));
 
     --lh-100: 100%;
     --lh-120: 120%;
@@ -70,6 +71,8 @@
     --fluid-spacing-8x16: clamp(var(--spacing-8px), 1.75vw, var(--spacing-16px));
     --fluid-spacing-40x56: clamp(var(--spacing-40px), 6.2vw, 3.5rem);
     --fluid-spacing-40x128: clamp(var(--spacing-40px), 14vw, var(--spacing-128px));
+    --fluid-spacing-24x184: clamp(var(--spacing-24px), 20vw, var(--spacing-184px));
+    --fluid-spacing-16x24: clamp(var(--spacing-16px), 2.62vw, var(--spacing-24px))
 }
 
 
@@ -79,7 +82,6 @@ body {
     font-family: var(--font-family-rubik);
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     height: 100vh;
     color: var(--clr-white);
@@ -111,7 +113,7 @@ header {
 }
 
 .subject__text {
-    font-size: var(--fs-18px);
+    font-size: var(--fluid-fs-18x28);
     font-weight: var(--fw-500);
 }
 
@@ -225,7 +227,7 @@ main {
 .menu__option, .question__option {
     background-color: var(--clr-blue850);
     border-radius: 0.75rem;
-    padding: var(--spacing-16px);
+    padding: var(--fluid-spacing-16x24);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -292,8 +294,14 @@ main {
 .question__content {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-40px);
-    /* padding: var(--spacing-32px) var(--spacing-24px) 0 var(--spacing-24px); */
+    gap: var(--fluid-spacing-40x128);
+    box-sizing: border-box;
+}
+
+.question__card-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-24px);
     box-sizing: border-box;
 }
 
@@ -305,7 +313,7 @@ main {
 
 .question__number {
     align-self: stretch;
-    font-size: var(--fs-14px);
+    font-size: var(--fluid-fs-14x20);
     font-style: italic;
     font-weight: var(--fw-400);
     line-height: 150%;
@@ -315,7 +323,7 @@ main {
 .question__text {
     align-self: stretch;
     color: var(--clr-white);
-    font-size: var(--fs-20px);
+    font-size: var(--fluid-fs-20x36);
     font-weight: var(--fw-500);
     line-height: var(--lh-120);
 }
@@ -341,12 +349,12 @@ main {
 .question__submit-btn {
     background-color: var(--clr-purple600);
     border-radius: 0.75rem;
-    padding: var(--spacing-16px);
+    padding: clamp(var(--spacing-16px), 3.5vw, var(--spacing-32px));
     box-shadow: 0px 16px 40px 0px #313E5124;
     border: none;
     
     color: var(--clr-white);
-    font-size: var(--fs-18px);
+    font-size: var(--fluid-fs-18x28);
     font-weight: var(--fw-500);
     width: 100%;
     box-sizing: border-box;
@@ -368,6 +376,11 @@ main {
     border-radius: 999px;
 }
 
+.question__opt-txt {
+    font-size: var(--fluid-fs-18x28);
+}
+
+
 @media (min-width: 600px) and (max-width: 1079px) {
     body.dark {
         background-image: url("../images/pattern-background-tablet-dark.svg");
@@ -383,6 +396,10 @@ main {
 
     .menu__option {
         width: clamp(20.4375rem, 70vw, 40rem);
+    }
+
+    .question__card-wrapper {
+        gap: var(--spacing-40px);
     }
 }
 
@@ -412,6 +429,32 @@ main {
 
     .menu__options {
         flex: 1;
+    }
+
+    .question__content{
+        flex-direction: row;
+    }
+
+    .question__card-wrapper {
+        flex: 1;
+        max-height: 29.5rem;
+        width: 29.0625rem;
+        gap: var(--spacing-184px)
+    }
+
+    .question__options {
+        flex: 1;
+        max-height: 29.5rem;
+    }
+
+    .question__option {
+        width: 35.25rem;
+    }
+
+    .question__submit {
+        max-width: 35.25rem;
+        width: 100%;
+        align-self: flex-end;
     }
 }
 
