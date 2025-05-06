@@ -13,7 +13,7 @@
   
   <header>
     <div class="subject">
-      <picture class="subject__icon">
+      <picture class="subject__icon access-icon">
         <img src="images/icon-accessibility.svg" alt="">
       </picture>
       <p class="subject__text">Accessibility</p>
@@ -44,25 +44,25 @@
 
       <ul class="menu__options">
         <li class="menu__option">
-          <picture class="menu__option-icon" id="html-icon">
+          <picture class="menu__option-icon html-icon">
             <img src="images/icon-html.svg" alt="">
           </picture>
           <p class="menu__option">HTML</p>
         </li>
         <li class="menu__option">
-          <picture class="menu__option-icon" id="css-icon">
+          <picture class="menu__option-icon css-icon">
             <img src="images/icon-css.svg" alt="">
           </picture>
           <p class="menu__option">CSS</p>
         </li>
         <li class="menu__option">
-          <picture class="menu__option-icon" id="js-icon">
+          <picture class="menu__option-icon js-icon">
             <img src="images/icon-js.svg" alt="">
           </picture>
           <p class="menu__option">JavaScript</p>
         </li>
         <li class="menu__option">
-          <picture class="menu__option-icon" id="access-icon">
+          <picture class="menu__option-icon access-icon">
             <img src="images/icon-accessibility.svg" alt="">
           </picture>
           <p class="menu__option">Accessibility</p>
@@ -73,7 +73,7 @@
   <!-- Quiz menu end -->
 
   <!-- Quiz question start -->
-  <section class="question">
+  <section class="question hide">
     <div class="question__content">
 
       <div class="question__card-wrapper">
@@ -116,24 +116,24 @@
   <!-- Quiz question end -->
 
   <!-- Quiz completed start -->
-<section class="complete hide">
+<section class="complete">
   <div class="complete__content">
 
     <div class="complete__text">
-      <p class="complete__text-a"></p>
-      <p class="complete__text-b"></p>
+      <p class="complete__text-a">Quiz completed</p>
+      <p class="complete__text-b">You scored...</p>
     </div>
 
     <div class="complete__summary">
       <div class="complete__subject">
         <picture class="complete__subject-icon">
-          <img src="" alt="">
+          <img class="access-icon" src="images/icon-accessibility.svg" alt="">
         </picture>
-        <p class="complete__subject-text"></p>
+        <p class="subject__text">Accessibility</p>
       </div>
       <div class="complete__numbers">
         <p class="complete__score">
-          <span id="final-score"></span>
+          <span id="final-score">8</span>
         </p>
         <p class="complete__goal">out of 10</p>
       </div>

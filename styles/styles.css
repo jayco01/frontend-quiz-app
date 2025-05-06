@@ -247,28 +247,28 @@ main {
     height: 100%;
 }
 
-#html-icon, .question__button {
+.html-icon, .question__button {
     width: var(--fluid-spacing-40x56);
     height: var(--fluid-spacing-40x56);
     background-color: var(--clr-orange50);
     border-radius: 0.375rem;
 }
 
-#css-icon {
+.css-icon {
     width: var(--fluid-spacing-40x56);
     height: var(--fluid-spacing-40x56);
     background-color: var(--clr-green100);
     border-radius: 0.375rem;
 }
 
-#js-icon {
+.js-icon {
     width: var(--fluid-spacing-40x56);
     height: var(--fluid-spacing-40x56);
     background-color: var(--clr-blue100);
     border-radius: 0.375rem;
 }
 
-#access-icon {
+.access-icon {
     width: var(--fluid-spacing-40x56);
     height: var(--fluid-spacing-40x56);
     background-color: var(--clr-purple100);
@@ -379,6 +379,8 @@ main {
 .question__opt-txt {
     font-size: var(--fluid-fs-18x28);
 }
+
+/* Score */
 
 
 @media (min-width: 600px) and (max-width: 1079px) {
