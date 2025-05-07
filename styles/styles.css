@@ -411,6 +411,8 @@ main {
     text-align: center;
     gap: var(--spacing-16px);
     padding: var(--spacing-32px);
+    background-color: var(--clr-blue850);
+    border-radius: 0.75rem;
 }
 
 .complete__subject {
