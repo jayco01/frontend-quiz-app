@@ -62,7 +62,7 @@
     --spacing-24px: 1.5rem;
     --spacing-32px: 2rem;
     --spacing-40px: 2.5rem;
-    --spavign-48px: 3rem;
+    --spacing-48px: 3rem;
     --spacing-64px: 4rem;
     --spacing-128px: 8rem;
     --spacing-144px: 9rem;
@@ -384,23 +384,25 @@ main {
 .complete {
     display: flex;
     flex-direction: column;
-    gap:var(--spacing-16px);
+    gap: clamp(var(--spacing-16px), 3.5vw, var(--spacing-32px));
 }
 
 .complete__content {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-40px);
+    gap: clamp(var(--spacing-40px), 15.75vw, var(--spacing-144px));
 }
 
 .complete__text-a {
-    font-size: var(--fs-40px);
+    font-size: var(--fluid-fs-40x64);
     font-weight: var(--fw-300);
+    white-space: nowrap;
 }
 
 .complete__text-b {
-    font-size: var(--spacing-40px);
+    font-size: var(--fluid-fs-40x64);
     font-weight: var(--fw-500);
+    white-space: nowrap;
 }
 
 .complete__summary {
@@ -410,9 +412,11 @@ main {
     justify-content: center;
     text-align: center;
     gap: var(--spacing-16px);
-    padding: var(--spacing-32px);
+    padding: clamp(var(--spacing-32px), 5.25vw, var(--spacing-48px));
     background-color: var(--clr-blue850);
-    border-radius: 0.75rem;
+    border-radius: clamp(0.75rem, 2.62vw, 1.5rem);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .complete__subject {
@@ -420,7 +424,7 @@ main {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-16px);
+    gap: clamp(var(--spacing-16px), 4.4vw, var(--spacing-40px));
 }
 
 .complete__numbers {
@@ -430,12 +434,12 @@ main {
 }
 
 #final-score {
-    font-size: var(--fs-88px);
+    font-size: clamp(var(--fs-88px), 15.75vw, var(--fs-144px));
     font-weight: var(--fw-500);
 }
 
 .complete__goal {
-    font-size: var(--fs-18px);
+    font-size: clamp(var(--fs-18px), 2.62vw, var(--fs-24px));
     color: var(--clr-blue300);
     font-weight: var(--fw-400);
 }
@@ -446,6 +450,10 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+.complete__again {
+    box-sizing: border-box;
 }
 
 
@@ -520,10 +528,29 @@ main {
         width: 35.25rem;
     }
 
-    .question__submit {
+    .question__submit{
         max-width: 35.25rem;
         width: 100%;
         align-self: flex-end;
+    }
+
+    .complete__again {
+        max-width: 32.25rem;
+        width: 100%;
+        align-self: flex-end;
+    }
+
+    .complete__content {
+        flex-direction: row;
+    }
+
+    .complete__text {
+        flex: 1;
+    }
+
+    .complete__summary {
+        flex: 1;
+        width: 32.25rem;
     }
 }
 
