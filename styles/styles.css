@@ -478,6 +478,12 @@ main {
     .question__card-wrapper {
         gap: var(--spacing-40px);
     }
+
+    .complete__content {
+        gap: var(--spacing-64px);
+    }
+
+
 }
 
 @media (min-width: 1080px) {
