@@ -84,7 +84,7 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    color: var(--clr-white);
+    
     min-height: 4.5rem;
     box-sizing: border-box;
 }
@@ -93,6 +93,12 @@ body.dark {
     color: var(--clr-white);
     background-color: var(--clr-blue900);
     background-image: url("../images/pattern-background-mobile-dark.svg");
+}
+
+body.light {
+    color: var(--clr-blue900);
+    background-color: var(--clr-grey50);
+    background-image: url("../images/pattern-background-mobile-light.svg");
 }
 
 header {
@@ -226,7 +232,6 @@ main {
 }
 
 .menu__option, .question__option {
-    background-color: var(--clr-blue850);
     border-radius: 0.75rem;
     padding: var(--fluid-spacing-16x24);
     display: flex;
@@ -237,6 +242,15 @@ main {
     box-shadow: 0px 16px 40px 0px #313E5124;
     box-sizing: border-box;
 }
+
+.menu__option.dark, .question__option.dark {
+    background-color: var(--clr-blue850);
+}
+
+.menu__option.light, .question__option.light {
+    background-color: var(--clr-white);
+}
+
 
 .menu__option-icon {
     display: flex;
@@ -424,10 +438,17 @@ main {
     text-align: center;
     gap: var(--spacing-16px);
     padding: clamp(var(--spacing-32px), 5.25vw, var(--spacing-48px));
-    background-color: var(--clr-blue850);
     border-radius: clamp(0.75rem, 2.62vw, 1.5rem);
     width: 100%;
     box-sizing: border-box;
+}
+
+.complete__summary.dark {
+    background-color: var(--clr-blue850);
+}
+
+.complete__summary.light {
+    background-color: var(--clr-white);
 }
 
 .complete__subject {
@@ -451,8 +472,15 @@ main {
 
 .complete__goal {
     font-size: clamp(var(--fs-18px), 2.62vw, var(--fs-24px));
-    color: var(--clr-blue300);
     font-weight: var(--fw-400);
+}
+
+.complete__goal.dark {
+    color: var(--clr-blue300);
+}
+
+.complete__goal.light {
+    color: var(--clr-grey500);
 }
 
 .complete__again {
@@ -472,6 +500,10 @@ main {
 @media (min-width: 600px) and (max-width: 1079px) {
     body.dark {
         background-image: url("../images/pattern-background-tablet-dark.svg");
+    }
+
+    body.light {
+        background-image: url("../images/pattern-background-tablet-light.svg");
     }
 
     header {
@@ -500,6 +532,10 @@ main {
 @media (min-width: 1080px) {
     body.dark {
         background-image: url("../images/pattern-background-desktop-dark.svg");
+    }
+
+    body.light {
+        background-image: url("../images/pattern-background-desktop-light.svg");
     }
 
     header {
