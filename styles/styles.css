@@ -43,9 +43,9 @@
     --fs-18px: 1.125rem;
     --fs-14px: 0.875rem;
 
-    --fluid-fs-40x64: clamp(var(--fs-40px),7vw,var(--fs-64px));
+    --fluid-fs-40x64: clamp(var(--fs-40px), 7vw,var(--fs-64px));
     --fluid-fs-14x20: clamp(var(--fs-14px), 2.2vw, var(--fs-20px));
-    --fluid-fs-18x28: clamp(var(--fs-18px),3.1vw,var(--fs-28px));
+    --fluid-fs-18x28: clamp(var(--fs-18px), 3.1vw,var(--fs-28px));
     --fluid-fs-20x36: clamp(var(--fs-20px), 4vw, var(--fs-36px));
 
     --lh-100: 100%;
@@ -132,10 +132,9 @@ header {
     width: clamp(5rem, 11vw, 8rem);
 }
 
-.theem__icon {
+.theme__icon {
     height: clamp(var(--spacing-16px), 2.5rem, var(--spacing-24px));
     width: clamp(var(--spacing-16px), 2.5rem, var(--spacing-24px));
-    padding: 0.25rem;
 }
 
 .theme__toggle input {
@@ -154,12 +153,12 @@ header {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: space-between; */
 }
 
 
 .slider--light {
-    background-color: var(--clr-purple600);
+    background-color: var(--clr-white);
     width: clamp(0.75rem,2.2vw,1.25rem);
     height: clamp(0.75rem,2.2vw,1.25rem);
     border-radius: 99px;
@@ -169,6 +168,7 @@ header {
     background-color: var(--clr-white);
     width: clamp(0.75rem,2.2vw,1.25rem);
     height: clamp(0.75rem,2.2vw,1.25rem);
+    margin-left: auto;
     border-radius: 99px;
 }
 

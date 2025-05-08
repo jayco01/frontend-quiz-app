@@ -12,7 +12,7 @@
 <body class="dark">
   
   <header>
-    <div class="subject">
+    <div class="subject hide">
       <picture class="subject__icon access-icon">
         <img src="images/icon-accessibility.svg" alt="">
       </picture>
@@ -22,9 +22,9 @@
       <div class="theme">
         <img src="images/icon-sun-light.svg" alt="" id="theme__sun--dark" class="theme__icon">
         <label class="theme__toggle">
-          <p class="slider--light"></p>
+          <p class="slider--light hide" id="slider-light"></p>
           <input type="checkbox" id="theme__switch" />
-          <p class="slider--dark"></p>
+          <p class="slider--dark" id="slider-dark"></p>
         </label>
         <img src="images/icon-moon-light.svg" alt="" id="theme__moon--dark" class="theme__icon">
       </div>
@@ -47,25 +47,25 @@
           <picture class="menu__option-icon html-icon">
             <img src="images/icon-html.svg" alt="">
           </picture>
-          <p class="menu__option dark">HTML</p>
+          <p >HTML</p>
         </li>
         <li class="menu__option dark">
           <picture class="menu__option-icon css-icon">
             <img src="images/icon-css.svg" alt="">
           </picture>
-          <p class="menu__option dark">CSS</p>
+          <p >CSS</p>
         </li>
         <li class="menu__option dark">
           <picture class="menu__option-icon js-icon">
             <img src="images/icon-js.svg" alt="">
           </picture>
-          <p class="menu__option dark">JavaScript</p>
+          <p >JavaScript</p>
         </li>
         <li class="menu__option dark">
           <picture class="menu__option-icon access-icon">
             <img src="images/icon-accessibility.svg" alt="">
           </picture>
-          <p class="menu__option dark">Accessibility</p>
+          <p >Accessibility</p>
         </li>
       </ul>
 
