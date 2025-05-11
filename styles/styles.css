@@ -153,6 +153,7 @@ header {
     width: 100%;
     display: flex;
     align-items: center;
+    min-width: var(--spacing-32px);
     /* justify-content: space-between; */
 }
 
