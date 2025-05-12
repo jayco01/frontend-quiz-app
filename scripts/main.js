@@ -8,6 +8,8 @@ const sliderDark = document.getElementById("slider-dark");
 
 
 
+
+
 // store and save the theme chosen
 const savedTheme = localStorage.getItem("theme");
 
