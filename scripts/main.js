@@ -6,8 +6,20 @@ const moonIcon = document.getElementById("theme__moon--dark");
 const sliderLigt = document.getElementById("slider-light");
 const sliderDark = document.getElementById("slider-dark");
 
+let quizData = [];
 
-
+fetch("data.json").then((response) => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+}).then((data) => {
+    quizData = data;
+    console.log("Quiz data loaded:", quizData);
+}).catch((error) => {
+    console.error("Error loading quiz data:", error);
+    alert("Failed to load Quiz data. Please try again.");
+})
 
 
 // store and save the theme chosen
