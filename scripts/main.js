@@ -1,13 +1,31 @@
+// theme variables
 const themeSwitch = document.getElementById("theme__switch");
-const menuOptionArray = document.querySelectorAll(".menu__option");
-const quetionOption = document.querySelectorAll(".question__option");
 const sunIcon = document.getElementById("theme__sun--dark");
 const moonIcon = document.getElementById("theme__moon--dark");
 const sliderLigt = document.getElementById("slider-light");
 const sliderDark = document.getElementById("slider-dark");
+// menu option buttons variables
+const menuOptionArray = document.querySelectorAll(".menu__option");
+const htmlBtn = document.getElementById("html-btn");
+const cssBtn = document.getElementById("css-btn");
+const jsBtn = document.getElementById("js-btn");
+const accessBtn = document.getElementById("access-btn");
+// question option buttons variables
+const quetionOptionArray = document.querySelectorAll(".question__option");
 
+// dynamic variables
 let quizData = [];
 
+htmlBtn.addEventListener("click", function() {
+
+});
+
+function switchPage(hidePage,showPage) {
+    hidePage.classList.add("hide");
+    showPage.classList.remove("hide");
+}
+
+//store data in the variable quizData
 fetch("data.json").then((response) => {
     if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -19,7 +37,7 @@ fetch("data.json").then((response) => {
 }).catch((error) => {
     console.error("Error loading quiz data:", error);
     alert("Failed to load Quiz data. Please try again.");
-})
+});
 
 
 // store and save the theme chosen
