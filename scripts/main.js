@@ -1,3 +1,7 @@
+// page variables
+const menuPage = document.getElementById("menu-page");
+const questionPage = document.getElementById("question-page");
+const completePage = document.getElementById("complete-page");
 // theme variables
 const themeSwitch = document.getElementById("theme__switch");
 const sunIcon = document.getElementById("theme__sun--dark");
@@ -16,9 +20,12 @@ const quetionOptionArray = document.querySelectorAll(".question__option");
 // dynamic variables
 let quizData = [];
 
-htmlBtn.addEventListener("click", function() {
-
-});
+menuOptionArray.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        switchPage(menuPage, questionPage);
+        console.log(`test menu option ${btn}`)
+    })
+})
 
 function switchPage(hidePage,showPage) {
     hidePage.classList.add("hide");
