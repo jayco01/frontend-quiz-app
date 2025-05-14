@@ -1,30 +1,34 @@
-// page variables
+// Page variables
 const menuPage = document.getElementById("menu-page");
 const questionPage = document.getElementById("question-page");
 const completePage = document.getElementById("complete-page");
-// theme variables
+// Header variables
 const themeSwitch = document.getElementById("theme__switch");
 const sunIcon = document.getElementById("theme__sun--dark");
 const moonIcon = document.getElementById("theme__moon--dark");
 const sliderLigt = document.getElementById("slider-light");
 const sliderDark = document.getElementById("slider-dark");
-// menu option buttons variables
+// Menu page variables
 const menuOptionArray = document.querySelectorAll(".menu__option");
 const htmlBtn = document.getElementById("html-btn");
 const cssBtn = document.getElementById("css-btn");
 const jsBtn = document.getElementById("js-btn");
 const accessBtn = document.getElementById("access-btn");
-// question option buttons variables
+// Question Page variables
 const quetionOptionArray = document.querySelectorAll(".question__option");
+const submitAnswerBtn = document.querySelector(".question__submit-btn")
+// Complete Page variables
+const completeBtn = document.querySelector(".complete__again");
 
 // dynamic variables
 let quizData = [];
 
-quetionOptionArray.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        switchPage(questionPage, completePage);
-        console.log(`test question option ${btn}`);
-    })
+completeBtn.addEventListener("click", () => {
+    switchPage(completePage, menuPage);
+})
+
+submitAnswerBtn.addEventListener("click", () => {
+    switchPage(questionPage, completePage);
 })
 
 menuOptionArray.forEach((btn) => {
