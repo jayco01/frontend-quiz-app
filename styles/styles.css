@@ -275,6 +275,7 @@ main {
     height: var(--fluid-spacing-40x56);
     background-color: var(--clr-orange50);
     border-radius: 0.375rem;
+    cursor: pointer;
 }
 
 .css-icon {
