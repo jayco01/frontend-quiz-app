@@ -20,10 +20,16 @@ const quetionOptionArray = document.querySelectorAll(".question__option");
 // dynamic variables
 let quizData = [];
 
+quetionOptionArray.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        switchPage(questionPage, completePage);
+        console.log(`test question option ${btn}`);
+    })
+})
+
 menuOptionArray.forEach((btn) => {
     btn.addEventListener("click", () => {
         switchPage(menuPage, questionPage);
-        console.log(`test menu option ${btn}`)
     })
 })
 
