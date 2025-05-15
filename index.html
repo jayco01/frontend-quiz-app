@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="">
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href=""> -->
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/styles.css">
   <script src="scripts/main.js" defer></script>
@@ -12,7 +12,7 @@
 <body class="dark">
   
   <header>
-    <div class="subject hide">
+    <div class="subject hide" id="selected-subject">
       <picture class="subject__icon access-icon">
         <img src="images/icon-accessibility.svg" alt="">
       </picture>
@@ -32,7 +32,7 @@
   
   <!-- Quiz menu start -->
   <main>
-    <section class="menu hide" id="menu-page">
+    <section class="menu" id="menu-page">
 
       <div class="menu__welcome">
         <div class="menu__title">
@@ -67,13 +67,13 @@
           </picture>
           <p >Accessibility</p>
         </button>
-      </div>
+      </div><!--closes menu__options-->
 
     </section>
   <!-- Quiz menu end -->
 
   <!-- Quiz question start -->
-  <section class="question" id="question-page">
+  <section class="question hide" id="question-page">
     <div class="question__content">
 
       <div class="question__card-wrapper">
@@ -87,25 +87,25 @@
       </div><!--closes question__card-->
 
       <div class="question__options">
-        <div class="question__option dark">
-          <button class="question__button">A</button>
+        <button class="question__option dark" id="a">
+          <p class="question__button">A</p>
           <p class="question__opt-txt">4.5 : 1</p>
-        </div>
-        <div class="question__option dark">
-          <button class="question__button">B</button>
+        </button>
+        <button class="question__option dark" id="b">
+          <p class="question__button">B</p>
           <p class="question__opt-txt">3 : 1</p>
-        </div>
-        <div class="question__option dark">
-          <button class="question__button">C</button>
+        </button>
+        <button class="question__option dark" id="c">
+          <p class="question__button">C</p>
           <p class="question__opt-txt">2.5 : 1</p>
-        </div>
-        <div class="question__option dark">
-          <button class="question__button">D</button>
+        </button>
+        <button class="question__option dark" id="d">
+          <p class="question__button">D</p>
           <p class="question__opt-txt">5 : 1</p>
-        </div>
-      </div>
+        </button>
+      </div><!--closes question__options-->
 
-    </div><!--colses qustion__content-->
+    </div><!--closes qustion__content-->
 
     <div class="question__submit">
       <button class="question__submit-btn">Submit Answer</button>

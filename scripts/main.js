@@ -2,45 +2,37 @@
 const menuPage = document.getElementById("menu-page");
 const questionPage = document.getElementById("question-page");
 const completePage = document.getElementById("complete-page");
+
 // Header variables
 const themeSwitch = document.getElementById("theme__switch");
 const sunIcon = document.getElementById("theme__sun--dark");
 const moonIcon = document.getElementById("theme__moon--dark");
 const sliderLigt = document.getElementById("slider-light");
 const sliderDark = document.getElementById("slider-dark");
+const selectedSubject = document.getElementById("selected-subject")
+
 // Menu page variables
 const menuOptionArray = document.querySelectorAll(".menu__option");
 const htmlBtn = document.getElementById("html-btn");
 const cssBtn = document.getElementById("css-btn");
 const jsBtn = document.getElementById("js-btn");
 const accessBtn = document.getElementById("access-btn");
+
 // Question Page variables
 const quetionOptionArray = document.querySelectorAll(".question__option");
-const submitAnswerBtn = document.querySelector(".question__submit-btn")
+const submitAnswerBtn = document.querySelector(".question__submit-btn");
+const a = document.getElementById("a");
+const b = document.getElementById("b");
+const c = document.getElementById("c");
+const d = document.getElementById("d");
+
 // Complete Page variables
 const completeBtn = document.querySelector(".complete__again");
 
-// dynamic variables
+// json data variables
 let quizData = [];
+// let htmlData = quizData[0];
 
-completeBtn.addEventListener("click", () => {
-    switchPage(completePage, menuPage);
-})
-
-submitAnswerBtn.addEventListener("click", () => {
-    switchPage(questionPage, completePage);
-})
-
-menuOptionArray.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        switchPage(menuPage, questionPage);
-    })
-})
-
-function switchPage(hidePage,showPage) {
-    hidePage.classList.add("hide");
-    showPage.classList.remove("hide");
-}
 
 //store data in the variable quizData
 fetch("data.json").then((response) => {
@@ -49,12 +41,45 @@ fetch("data.json").then((response) => {
     }
     return response.json();
 }).then((data) => {
-    quizData = data;
+    quizData = data.quizzes;
     console.log("Quiz data loaded:", quizData);
 }).catch((error) => {
     console.error("Error loading quiz data:", error);
     alert("Failed to load Quiz data. Please try again.");
 });
+
+function loadHeaderData(index) {
+    console.log(quizData)
+}
+
+
+
+
+menuOptionArray.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        switchPage(menuPage, questionPage);
+        toggleHide(selectedSubject);
+        console.log(quizData[index]);
+    });
+});
+submitAnswerBtn.addEventListener("click", () => {
+    switchPage(questionPage, completePage);
+});
+completeBtn.addEventListener("click", () => {
+    switchPage(completePage, menuPage);
+    toggleHide(selectedSubject);
+});
+
+// Toggle between pages
+function switchPage(hidePage,showPage) {
+    hidePage.classList.add("hide");
+    showPage.classList.remove("hide");
+}
+
+//add and remove hide class
+function toggleHide(element) {
+    element.classList.toggle("hide");
+}
 
 
 // store and save the theme chosen
