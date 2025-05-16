@@ -9,7 +9,9 @@ const sunIcon = document.getElementById("theme__sun--dark");
 const moonIcon = document.getElementById("theme__moon--dark");
 const sliderLigt = document.getElementById("slider-light");
 const sliderDark = document.getElementById("slider-dark");
-const selectedSubject = document.getElementById("selected-subject")
+const selectedSubject = document.getElementById("selected-subject");
+const subjectText = document.querySelector(".subject__text");
+const subjectIcon = document.getElementById("subject-icon");
 
 // Menu page variables
 const menuOptionArray = document.querySelectorAll(".menu__option");
@@ -31,7 +33,6 @@ const completeBtn = document.querySelector(".complete__again");
 
 // json data variables
 let quizData = [];
-// let htmlData = quizData[0];
 
 
 //store data in the variable quizData
@@ -48,18 +49,20 @@ fetch("data.json").then((response) => {
     alert("Failed to load Quiz data. Please try again.");
 });
 
+// load the header data from json file
 function loadHeaderData(index) {
-    console.log(quizData)
+    console.log(quizData[index].title);
+    subjectText.innerHTML = quizData[index].title;
+    subjectIcon.src = quizData[index].icon;
 }
 
 
-
-
+// load data file after clicking menu option
 menuOptionArray.forEach((btn, index) => {
     btn.addEventListener("click", () => {
         switchPage(menuPage, questionPage);
         toggleHide(selectedSubject);
-        console.log(quizData[index]);
+        loadHeaderData(index);
     });
 });
 submitAnswerBtn.addEventListener("click", () => {
