@@ -23,17 +23,42 @@ const accessBtn = document.getElementById("access-btn");
 // Question Page variables
 const quetionOptionArray = document.querySelectorAll(".question__option");
 const submitAnswerBtn = document.querySelector(".question__submit-btn");
+const questionIndex = document.getElementById("question__index");
+const questionText = document.querySelector(".question__text");
+const optionTextArray = document.querySelectorAll(".question__opt-txt")
 const a = document.getElementById("a");
+const aText = document.getElementById("a-text");
 const b = document.getElementById("b");
+const bText = document.getElementById("b-text");
 const c = document.getElementById("c");
+const cText = document.getElementById("c-text");
 const d = document.getElementById("d");
+const dText = document.getElementById("d-text");
 
 // Complete Page variables
 const completeBtn = document.querySelector(".complete__again");
 
 // json data variables
 let quizData = [];
+let questionIndexCounter = 0;
 
+
+
+// load subject data to question page after clicking the specific subject
+function loadSubjectQuestion(index) {
+    questionText.textContent = quizData[index].questions[0].question;
+    console.log(quizData[index].questions[0].question)
+    questionIndex.textContent = questionIndexCounter;
+
+    let fetchedOptionArray = [];
+    fetchedOptionArray = quizData[index].questions[questionIndexCounter].options;
+
+    optionTextArray.forEach((option, i) => {
+        option.textContent = fetchedOptionArray[1];
+    })
+    
+    console.log(fetchedOptionArray);
+}
 
 //store data in the variable quizData
 fetch("data.json").then((response) => {
@@ -49,20 +74,13 @@ fetch("data.json").then((response) => {
     alert("Failed to load Quiz data. Please try again.");
 });
 
-// load the header data from json file
-function loadHeaderData(index) {
-    console.log(quizData[index].title);
-    subjectText.innerHTML = quizData[index].title;
-    subjectIcon.src = quizData[index].icon;
-}
-
-
 // load data file after clicking menu option
 menuOptionArray.forEach((btn, index) => {
     btn.addEventListener("click", () => {
         switchPage(menuPage, questionPage);
         toggleHide(selectedSubject);
         loadHeaderData(index);
+        loadSubjectQuestion(index);
     });
 });
 submitAnswerBtn.addEventListener("click", () => {
@@ -72,6 +90,12 @@ completeBtn.addEventListener("click", () => {
     switchPage(completePage, menuPage);
     toggleHide(selectedSubject);
 });
+
+// load the header data from json file
+function loadHeaderData(index) {
+    subjectText.innerHTML = quizData[index].title;
+    subjectIcon.src = quizData[index].icon;
+}
 
 // Toggle between pages
 function switchPage(hidePage,showPage) {
