@@ -40,25 +40,16 @@ const completeBtn = document.querySelector(".complete__again");
 
 // json data variables
 let quizData = [];
-let questionIndexCounter = 0;
+let questionIndexCounter = 1;
+let chosenSubjectIndex;
+
+
+quetionOptionArray.forEach((btn) => {
+})
 
 
 
-// load subject data to question page after clicking the specific subject
-function loadSubjectQuestion(index) {
-    questionText.textContent = quizData[index].questions[0].question;
-    console.log(quizData[index].questions[0].question)
-    questionIndex.textContent = questionIndexCounter;
 
-    let fetchedOptionArray = [];
-    fetchedOptionArray = quizData[index].questions[questionIndexCounter].options;
-
-    optionTextArray.forEach((option, i) => {
-        option.textContent = fetchedOptionArray[1];
-    })
-    
-    console.log(fetchedOptionArray);
-}
 
 //store data in the variable quizData
 fetch("data.json").then((response) => {
@@ -81,15 +72,39 @@ menuOptionArray.forEach((btn, index) => {
         toggleHide(selectedSubject);
         loadHeaderData(index);
         loadSubjectQuestion(index);
+        chosenSubjectIndex = index;
     });
 });
+
+// go to next question
 submitAnswerBtn.addEventListener("click", () => {
-    switchPage(questionPage, completePage);
+    if (questionIndexCounter == 10) {
+        switchPage(questionPage, completePage);
+    } else {
+        loadSubjectQuestion(chosenSubjectIndex);
+        questionIndexCounter++;
+    }
 });
+
+// go back to menu page
 completeBtn.addEventListener("click", () => {
     switchPage(completePage, menuPage);
     toggleHide(selectedSubject);
 });
+
+// load subject data to question page after clicking the specific subject
+function loadSubjectQuestion(index) {
+    questionText.textContent = quizData[index].questions[(questionIndexCounter - 1)].question;
+    questionIndex.textContent = questionIndexCounter;
+
+    let fetchedOptionArray = [];
+    fetchedOptionArray = quizData[index].questions[(questionIndexCounter - 1)].options;
+
+    optionTextArray.forEach((option, i) => {
+        option.textContent = fetchedOptionArray[1];
+    })
+    
+}
 
 // load the header data from json file
 function loadHeaderData(index) {
