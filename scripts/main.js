@@ -76,13 +76,14 @@ menuOptionArray.forEach((btn, index) => {
     });
 });
 
+
 // go to next question
 submitAnswerBtn.addEventListener("click", () => {
     if (questionIndexCounter == 10) {
         switchPage(questionPage, completePage);
     } else {
-        loadSubjectQuestion(chosenSubjectIndex);
         questionIndexCounter++;
+        loadSubjectQuestion(chosenSubjectIndex);
     }
 });
 

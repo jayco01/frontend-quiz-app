@@ -242,7 +242,7 @@ main {
     font-weight: var(--fw-500);
     box-shadow: 0px 16px 40px 0px #313E5124;
     box-sizing: border-box;
-    border: none;
+    border: 3px solid transparent;
     cursor: pointer;
 }
 
@@ -254,6 +254,18 @@ main {
 .menu__option.light, .question__option.light {
     background-color: var(--clr-white);
     color: var(--clr-blue900);
+}
+
+.validation-icon {
+    width: 100%;
+}
+
+.correct {
+    border: 3px solid var(--clr-green500);
+}
+
+.wrong {
+    border: 3px solid var(--clr-red500);
 }
 
 
@@ -357,6 +369,13 @@ main {
     font-size: var(--fluid-fs-20x36);
     font-weight: var(--fw-500);
     line-height: var(--lh-120);
+}
+
+.option-text-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .question__button {

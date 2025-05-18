@@ -32,7 +32,7 @@
   
   <!-- Quiz menu start -->
   <main>
-    <section class="menu" id="menu-page">
+    <section class="menu hide" id="menu-page">
 
       <div class="menu__welcome">
         <div class="menu__title">
@@ -73,7 +73,7 @@
   <!-- Quiz menu end -->
 
   <!-- Quiz question start -->
-  <section class="question hide" id="question-page">
+  <section class="question" id="question-page">
     <div class="question__content">
 
       <div class="question__card-wrapper">
@@ -89,19 +89,31 @@
       <div class="question__options">
         <button class="question__option dark" id="a">
           <p class="question__button">A</p>
-          <p class="question__opt-txt" id="a-text">4.5 : 1</p>
+          <div class="option-text-wrapper">
+            <p class="question__opt-txt" id="a-text">4.5 : 1</p>
+            <picture ><img class="validation-icon hide" src="images/icon-correct.svg" alt=""></picture>
+          </div>
         </button>
         <button class="question__option dark" id="b">
           <p class="question__button">B</p>
-          <p class="question__opt-txt" id="b-text">3 : 1</p>
+          <div class="option-text-wrapper">
+            <p class="question__opt-txt" id="b-text">3 : 1</p>
+            <picture ><img class="validation-icon hide" src="images/icon-correct.svg" alt=""></picture>
+          </div>
         </button>
         <button class="question__option dark" id="c">
           <p class="question__button">C</p>
-          <p class="question__opt-txt" id="c-text">2.5 : 1</p>
+          <div class="option-text-wrapper">
+            <p class="question__opt-txt" id="c-text">2.5 : 1</p>
+            <picture ><img class="validation-icon hide" src="images/icon-correct.svg" alt=""></picture>
+          </div>
         </button>
         <button class="question__option dark" id="d">
           <p class="question__button">D</p>
-          <p class="question__opt-txt" id="d-text">5 : 1</p>
+          <div class="option-text-wrapper">
+            <p class="question__opt-txt" id="d-text">5 : 1</p>
+            <picture ><img class="validation-icon hide" src="images/icon-correct.svg" alt=""></picture>
+          </div>
         </button>
       </div><!--closes question__options-->
 
