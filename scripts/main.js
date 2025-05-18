@@ -90,6 +90,7 @@ submitAnswerBtn.addEventListener("click", () => {
 completeBtn.addEventListener("click", () => {
     switchPage(completePage, menuPage);
     toggleHide(selectedSubject);
+    questionIndexCounter = 1;
 });
 
 // load subject data to question page after clicking the specific subject
@@ -101,7 +102,7 @@ function loadSubjectQuestion(index) {
     fetchedOptionArray = quizData[index].questions[(questionIndexCounter - 1)].options;
 
     optionTextArray.forEach((option, i) => {
-        option.textContent = fetchedOptionArray[1];
+        option.textContent = fetchedOptionArray[i];
     })
     
 }
