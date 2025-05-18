@@ -21,11 +21,11 @@ const jsBtn = document.getElementById("js-btn");
 const accessBtn = document.getElementById("access-btn");
 
 // Question Page variables
-const quetionOptionArray = document.querySelectorAll(".question__option");
+const questionOptionArray = document.querySelectorAll(".question__option");
 const submitAnswerBtn = document.querySelector(".question__submit-btn");
 const questionIndex = document.getElementById("question__index");
 const questionText = document.querySelector(".question__text");
-const optionTextArray = document.querySelectorAll(".question__opt-txt")
+const optionTextArray = document.querySelectorAll(".question__opt-txt");
 const a = document.getElementById("a");
 const aText = document.getElementById("a-text");
 const b = document.getElementById("b");
@@ -34,22 +34,55 @@ const c = document.getElementById("c");
 const cText = document.getElementById("c-text");
 const d = document.getElementById("d");
 const dText = document.getElementById("d-text");
+const validationIconArray = document.querySelectorAll(".validation-icon");
 
 // Complete Page variables
 const completeBtn = document.querySelector(".complete__again");
 
-// json data variables
+// dynamic variables
 let quizData = [];
-let questionIndexCounter = 1;
-let chosenSubjectIndex;
+let questionIndexCounter = 1; //counts what question the user is currently in
+let chosenSubjectIndex; //what subject did the user choose
+let correctCounter = 0;
 
+// compare actual answer to the correct answer
+questionOptionArray.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        let userAnswer = btn.querySelector(".question__opt-txt").textContent;
+        let correct = quizData[chosenSubjectIndex].questions[questionIndexCounter - 1].answer;
+        console.log(correct);
 
-quetionOptionArray.forEach((btn) => {
+        if (userAnswer == correct) {
+            btn.classList.add("correct");
+            btn.classList.remove("wrong");
+        } else {
+            btn.classList.add("wrong");
+            btn.classList.remove("correct");
+            showCorrectAnswer(correct);
+
+        }
+        
+    })
 })
 
+// show correct answer
+function showCorrectAnswer(correct) {
+    questionOptionArray.forEach((btn) => {
+        let optionText = btn. querySelector(".question__opt-txt").textContent
+        if (optionText == correct){
+            btn.classList.add("correct");
+        }
 
+    })
+}
 
-
+// Remove validation
+function removeValidation() {
+    questionOptionArray.forEach((btn) => {
+        btn.classList.remove("correct");
+        btn.classList.remove("wrong");
+    })
+}
 
 //store data in the variable quizData
 fetch("data.json").then((response) => {
@@ -76,7 +109,6 @@ menuOptionArray.forEach((btn, index) => {
     });
 });
 
-
 // go to next question
 submitAnswerBtn.addEventListener("click", () => {
     if (questionIndexCounter == 10) {
@@ -85,6 +117,7 @@ submitAnswerBtn.addEventListener("click", () => {
         questionIndexCounter++;
         loadSubjectQuestion(chosenSubjectIndex);
     }
+    removeValidation();
 });
 
 // go back to menu page
