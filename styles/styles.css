@@ -614,7 +614,8 @@ main {
         flex: 1;
         max-height: 29.5rem;
         width: 29.0625rem;
-        gap: var(--spacing-184px)
+        /* gap: var(--spacing-184px) */
+        justify-content: space-between;
     }
 
     .question__options {
