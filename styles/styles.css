@@ -423,10 +423,11 @@ main {
     border-radius: 999px;
     overflow: hidden;
     height: var(--spacing-16px);
+    box-shadow: 0px 16px 40px 0px #313E5124;
 }
 
 .question__progress.dark {
- background-color: var(--clr-blue850);
+ background-color: var(--clr-blue300);
 }
 
 .question__progress.slider--light {
@@ -437,7 +438,7 @@ main {
 .question__progress-bar {
     height: 100%;
     background-color: var(--clr-purple600);
-    width: 100%;
+    width: 50%;
     transition: width 0.3s ease;
     border-radius: 999px;
 }

@@ -60,8 +60,7 @@ questionOptionArray.forEach((btn) => {
             btn.classList.remove("correct");
             showCorrectAnswer(correct);
 
-        }
-        
+        } 
     })
 })
 
@@ -159,98 +158,46 @@ function toggleHide(element) {
 }
 
 
-// store and save the theme chosen
-const savedTheme = localStorage.getItem("theme");
 
+/* 
+   main theme function
+*/
+function applyTheme(mode) {
+  const isLight = mode === 'light';
 
-// apply the saved theme when relaoding the page
-if (savedTheme === "light") {
-    document.body.classList.add("light");
-    document.body.classList.remove("dark");
-
-    menuOptionArray.forEach(element => {
-        element.classList.add("light");
-        element.classList.remove("dark");
-    });
-
-    questionOptionArray.forEach(element => {
-            element.classList.add("light");
-            element.classList.remove("dark");
-        });
-
-    sunIcon.src = "images/icon-sun-dark.svg";
-    moonIcon.src = "images/icon-moon-dark.svg";
-
-    sliderLigt.classList.remove("hide");
-    sliderDark.classList.add("hide");
-
-    themeSwitch.checked = true;
-} else {
-    document.body.classList.remove("light");
-    document.body.classList.add("dark");
-
-    menuOptionArray.forEach(element => {
-        element.classList.add("dark");
-        element.classList.remove("light");
-    });
-
-    questionOptionArray.forEach(element => {
-        element.classList.add("dark");
-        element.classList.remove("light");
-    });
-
-    sunIcon.src = "images/icon-sun-light.svg";
-    moonIcon.src = "images/icon-moon-light.svg";
-
-    sliderLigt.classList.add("hide");
-    sliderDark.classList.remove("hide");
-
-    themeSwitch.checked = false;
+  setThemeClasses(isLight); 
+  updateIconsAndPills(isLight);
+  themeSwitch.checked = isLight;
+  localStorage.setItem('theme', mode); // remember preference
 }
 
-// switch theme and set the variable "theme" to the appropriate value
-themeSwitch.addEventListener("change", () => {
-    if (themeSwitch.checked) {
-        document.body.classList.add("light");
-        document.body.classList.remove("dark");
+//apply .light / .dark to every themed element
+function setThemeClasses(isLight) {
+  flipOne(document.body, isLight);
+  menuOptionArray.forEach(element => flipOne(element, isLight));
+  questionOptionArray.forEach(element => flipOne(element, isLight));
+}
 
-        menuOptionArray.forEach(element => {
-            element.classList.add("light");
-            element.classList.remove("dark");
-        });
-        
-        questionOptionArray.forEach(element => {
-            element.classList.add("light");
-            element.classList.remove("dark");
-        });
+//flip classes on ONE element
+function flipOne(element, isLight) {
+  element.classList.toggle('light', isLight);
+  element.classList.toggle('dark',  !isLight);
+}
 
-        sunIcon.src = "images/icon-sun-dark.svg";
-        moonIcon.src = "images/icon-moon-dark.svg";
+// swap icons and slider
+function updateIconsAndPills(isLight) {
+  sunIcon.src  = `images/icon-sun-${isLight ? 'dark' : 'light'}.svg`;
+  moonIcon.src = `images/icon-moon-${isLight ? 'dark' : 'light'}.svg`;
 
-        sliderLigt.classList.remove("hide");
-        sliderDark.classList.add("hide");
-        
-        localStorage.setItem("theme", "light");
-    } else {
-        document.body.classList.remove("light");
-        document.body.classList.add("dark");
+  sliderLigt.classList.toggle('hide', !isLight);
+  sliderDark.classList.toggle('hide',  isLight);
+}
 
-        menuOptionArray.forEach(element => {
-            element.classList.add("dark");
-            element.classList.remove("light");
-        });
-
-        questionOptionArray.forEach(element => {
-            element.classList.add("dark");
-            element.classList.remove("light");
-        });
-
-        sunIcon.src = "images/icon-sun-light.svg";
-        moonIcon.src = "images/icon-moon-light.svg";
-
-        sliderLigt.classList.add("hide");
-        sliderDark.classList.remove("hide");
-        
-        localStorage.setItem("theme", "dark");
-    }
+//Save and load theme if the page is refresed or exited
+const savedTheme = localStorage.getItem('theme');
+applyTheme(savedTheme === 'light' ? 'light' : 'dark');
+   
+// listen for user toggle
+themeSwitch.addEventListener('change', () => {
+  applyTheme(themeSwitch.checked ? 'light' : 'dark');
 });
