@@ -365,10 +365,17 @@ main {
 
 .question__text {
     align-self: stretch;
-    color: var(--clr-white);
     font-size: var(--fluid-fs-20x36);
     font-weight: var(--fw-500);
     line-height: var(--lh-120);
+}
+
+.question__text.dark {
+    color: var(--clr-white);
+}
+
+.question__text.light {
+    color: var(--clr-blue950);
 }
 
 .option-text-wrapper {
@@ -413,16 +420,24 @@ main {
 
 .question__progress {
     width: 100%;
-    background-color: var(--clr-blue850);
     border-radius: 999px;
     overflow: hidden;
     height: var(--spacing-16px);
 }
 
+.question__progress.dark {
+ background-color: var(--clr-blue850);
+}
+
+.question__progress.slider--light {
+ background-color: var(--clr-white);
+}
+
+
 .question__progress-bar {
     height: 100%;
     background-color: var(--clr-purple600);
-    width: 0%;
+    width: 100%;
     transition: width 0.3s ease;
     border-radius: 999px;
 }
@@ -605,6 +620,8 @@ main {
 
     .question__option {
         width: 35.25rem;
+        max-height: 6.5rem;
+        box-sizing: border-box;
     }
 
     .question__submit{

@@ -173,6 +173,11 @@ if (savedTheme === "light") {
         element.classList.remove("dark");
     });
 
+    questionOptionArray.forEach(element => {
+            element.classList.add("light");
+            element.classList.remove("dark");
+        });
+
     sunIcon.src = "images/icon-sun-dark.svg";
     moonIcon.src = "images/icon-moon-dark.svg";
 
@@ -185,6 +190,11 @@ if (savedTheme === "light") {
     document.body.classList.add("dark");
 
     menuOptionArray.forEach(element => {
+        element.classList.add("dark");
+        element.classList.remove("light");
+    });
+
+    questionOptionArray.forEach(element => {
         element.classList.add("dark");
         element.classList.remove("light");
     });
@@ -208,6 +218,11 @@ themeSwitch.addEventListener("change", () => {
             element.classList.add("light");
             element.classList.remove("dark");
         });
+        
+        questionOptionArray.forEach(element => {
+            element.classList.add("light");
+            element.classList.remove("dark");
+        });
 
         sunIcon.src = "images/icon-sun-dark.svg";
         moonIcon.src = "images/icon-moon-dark.svg";
@@ -221,6 +236,11 @@ themeSwitch.addEventListener("change", () => {
         document.body.classList.add("dark");
 
         menuOptionArray.forEach(element => {
+            element.classList.add("dark");
+            element.classList.remove("light");
+        });
+
+        questionOptionArray.forEach(element => {
             element.classList.add("dark");
             element.classList.remove("light");
         });
