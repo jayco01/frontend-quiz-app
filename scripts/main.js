@@ -50,26 +50,34 @@ questionOptionArray.forEach((btn) => {
     btn.addEventListener("click", () => {
         let userAnswer = btn.querySelector(".question__opt-txt").textContent;
         let correct = quizData[chosenSubjectIndex].questions[questionIndexCounter - 1].answer;
+        let validationIcon = btn.querySelector(".validation-icon");
         console.log(correct);
 
         if (userAnswer == correct) {
             btn.classList.add("correct");
             btn.classList.remove("wrong");
+            validationIcon.classList.remove("hide");
+            validationIcon.src = "images/icon-correct.svg";
         } else {
             btn.classList.add("wrong");
             btn.classList.remove("correct");
+            validationIcon.classList.remove("hide");
+            validationIcon.src = "images/icon-incorrect.svg";
             showCorrectAnswer(correct);
-
         } 
+        questionOptionArray.forEach(b => b.disabled = true)
     })
 })
 
-// show correct answer
+// show correct answer after answering
 function showCorrectAnswer(correct) {
     questionOptionArray.forEach((btn) => {
-        let optionText = btn. querySelector(".question__opt-txt").textContent
+        let optionText = btn.querySelector(".question__opt-txt").textContent
+        let validationIcon = btn.querySelector(".validation-icon");
         if (optionText == correct){
             btn.classList.add("correct");
+            validationIcon.classList.remove("hide");
+            validationIcon.src = "images/icon-correct.svg";
         }
 
     })
@@ -80,6 +88,9 @@ function removeValidation() {
     questionOptionArray.forEach((btn) => {
         btn.classList.remove("correct");
         btn.classList.remove("wrong");
+        let validationIcon = btn.querySelector(".validation-icon");
+        validationIcon.classList.add("hide");
+        questionOptionArray.forEach(b => b.disabled = false)
     })
 }
 
