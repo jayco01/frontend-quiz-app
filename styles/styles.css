@@ -449,6 +449,20 @@ main {
     font-size: var(--fluid-fs-18x28);
 }
 
+.submit-error {
+    color: var(--clr-red500);
+    font-size: var(--fluid-fs-18x28);
+    font-weight: var(--fw-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.submit-error img {
+    width: var(--spacing-40px);
+}
+
 /* Score */
 .complete {
     display: flex;

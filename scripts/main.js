@@ -36,6 +36,7 @@ const d = document.getElementById("d");
 const dText = document.getElementById("d-text");
 const validationIconArray = document.querySelectorAll(".validation-icon");
 const progressBar = document.querySelector(".question__progress-bar");
+const notAnsweredError = document.getElementById("question__submit-error");
 
 // Complete Page variables
 const completeBtn = document.querySelector(".complete__again");
@@ -46,6 +47,7 @@ let quizData = [];
 let questionIndexCounter = 1; //counts what question the user is currently in
 let chosenSubjectIndex; //what subject did the user choose
 let correctCounter = 0;
+let answered = false;
 
 //update progress bar
  function updateProgressBar() {
@@ -73,6 +75,8 @@ questionOptionArray.forEach((btn) => {
             showCorrectAnswer(correct);
         } 
         questionOptionArray.forEach(b => b.disabled = true)
+        answered = true;
+        notAnsweredError.classList.add("hide");
     })
 })
 
@@ -115,6 +119,8 @@ fetch("data.json").then((response) => {
     alert("Failed to load Quiz data. Please try again.");
 });
 
+//
+
 // load data file after clicking menu option
 menuOptionArray.forEach((btn, index) => {
     btn.addEventListener("click", () => {
@@ -129,11 +135,17 @@ menuOptionArray.forEach((btn, index) => {
 
 // go to next question
 submitAnswerBtn.addEventListener("click", () => {
-    if (questionIndexCounter == 10) {
+    if (!answered) {
+        notAnsweredError.classList.remove("hide");
+    } else if (questionIndexCounter == 10) {
         switchPage(questionPage, completePage);
+        answered = false;
+        notAnsweredError.classList.add("hide");
     } else {
         questionIndexCounter++;
         loadSubjectQuestion(chosenSubjectIndex);
+        answered = false;
+        notAnsweredError.classList.add("hide");
     }
     removeValidation();
     updateProgressBar();
