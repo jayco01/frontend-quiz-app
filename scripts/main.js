@@ -35,6 +35,7 @@ const cText = document.getElementById("c-text");
 const d = document.getElementById("d");
 const dText = document.getElementById("d-text");
 const validationIconArray = document.querySelectorAll(".validation-icon");
+const progressBar = document.querySelector(".question__progress-bar");
 
 // Complete Page variables
 const completeBtn = document.querySelector(".complete__again");
@@ -45,6 +46,11 @@ let quizData = [];
 let questionIndexCounter = 1; //counts what question the user is currently in
 let chosenSubjectIndex; //what subject did the user choose
 let correctCounter = 0;
+
+//update progress bar
+ function updateProgressBar() {
+    progressBar.style.width = `${(questionIndexCounter * 100)/10}%`;
+};
 
 // compare actual answer to the correct answer
 questionOptionArray.forEach((btn) => {
@@ -117,6 +123,7 @@ menuOptionArray.forEach((btn, index) => {
         loadHeaderData(index);
         loadSubjectQuestion(index);
         chosenSubjectIndex = index;
+        updateProgressBar();
     });
 });
 
@@ -129,6 +136,7 @@ submitAnswerBtn.addEventListener("click", () => {
         loadSubjectQuestion(chosenSubjectIndex);
     }
     removeValidation();
+    updateProgressBar();
 });
 
 // go back to menu page
@@ -136,6 +144,7 @@ completeBtn.addEventListener("click", () => {
     switchPage(completePage, menuPage);
     toggleHide(selectedSubject);
     questionIndexCounter = 1;
+    updateProgressBar();
 });
 
 // load subject data to question page after clicking the specific subject
