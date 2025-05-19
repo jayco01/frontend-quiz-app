@@ -38,6 +38,7 @@ const validationIconArray = document.querySelectorAll(".validation-icon");
 
 // Complete Page variables
 const completeBtn = document.querySelector(".complete__again");
+const completeSummary = document.querySelector(".complete__summary");
 
 // dynamic variables
 let quizData = [];
@@ -185,6 +186,7 @@ function applyTheme(mode) {
 //apply .light / .dark to every themed element
 function setThemeClasses(isLight) {
   flipOne(document.body, isLight);
+  flipOne(completeSummary, isLight);
   menuOptionArray.forEach(element => flipOne(element, isLight));
   questionOptionArray.forEach(element => flipOne(element, isLight));
 }
