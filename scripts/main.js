@@ -41,6 +41,7 @@ const notAnsweredError = document.getElementById("question__submit-error");
 // Complete Page variables
 const completeBtn = document.querySelector(".complete__again");
 const completeSummary = document.querySelector(".complete__summary");
+const finalScore = document.getElementById("final-score");
 
 // dynamic variables
 let quizData = [];
@@ -67,6 +68,7 @@ questionOptionArray.forEach((btn) => {
             btn.classList.remove("wrong");
             validationIcon.classList.remove("hide");
             validationIcon.src = "images/icon-correct.svg";
+            correctCounter++;
         } else {
             btn.classList.add("wrong");
             btn.classList.remove("correct");
@@ -74,11 +76,11 @@ questionOptionArray.forEach((btn) => {
             validationIcon.src = "images/icon-incorrect.svg";
             showCorrectAnswer(correct);
         } 
-        questionOptionArray.forEach(b => b.disabled = true)
+        questionOptionArray.forEach(b => b.disabled = true);
         answered = true;
         notAnsweredError.classList.add("hide");
-    })
-})
+    });
+});
 
 // show correct answer after answering
 function showCorrectAnswer(correct) {
@@ -90,8 +92,7 @@ function showCorrectAnswer(correct) {
             validationIcon.classList.remove("hide");
             validationIcon.src = "images/icon-correct.svg";
         }
-
-    })
+    });
 }
 
 // Remove validation
@@ -101,8 +102,8 @@ function removeValidation() {
         btn.classList.remove("wrong");
         let validationIcon = btn.querySelector(".validation-icon");
         validationIcon.classList.add("hide");
-        questionOptionArray.forEach(b => b.disabled = false)
-    })
+        questionOptionArray.forEach(b => b.disabled = false);
+    });
 }
 
 //store data in the variable quizData
@@ -119,9 +120,7 @@ fetch("data.json").then((response) => {
     alert("Failed to load Quiz data. Please try again.");
 });
 
-//
-
-// load data file after clicking menu option
+// load data file after choosing a subject
 menuOptionArray.forEach((btn, index) => {
     btn.addEventListener("click", () => {
         switchPage(menuPage, questionPage);
@@ -139,6 +138,7 @@ submitAnswerBtn.addEventListener("click", () => {
         notAnsweredError.classList.remove("hide");
     } else if (questionIndexCounter == 10) {
         switchPage(questionPage, completePage);
+        finalScore.textContent = correctCounter;
         answered = false;
         notAnsweredError.classList.add("hide");
     } else {
@@ -156,6 +156,7 @@ completeBtn.addEventListener("click", () => {
     switchPage(completePage, menuPage);
     toggleHide(selectedSubject);
     questionIndexCounter = 1;
+    correctCounter = 0;
     updateProgressBar();
 });
 
