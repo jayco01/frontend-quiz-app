@@ -68,8 +68,12 @@ function getCurrentQuestion(index) {
 }
 
  function updateProgressBar() {
-    progressBar.style.width = `${(questionIndexCounter * 100)/10}%`;
+    progressBar.style.width = `${(questionIndexCounter * 100)/getQuestionCount(chosenSubjectIndex)}%`;
 };
+
+function getQuestionCount(index = chosenSubjectIndex) {
+    return quizData[index].questions.length;
+}
 
 /* 
     THEME FUNCTIONS
@@ -270,7 +274,7 @@ menuOptionArray.forEach((btn, index) => {
 submitAnswerBtn.addEventListener("click", () => {
     if (!answered) {
         handleEmptySubmit();
-    } else if (questionIndexCounter == 10) {
+    } else if (questionIndexCounter == getQuestionCount(chosenSubjectIndex)) {
         handleFinalSubmit();
     } else {
         handleNextQuestion();
