@@ -51,59 +51,101 @@ let chosenSubjectIndex; //what subject did the user choose
 let correctCounter = 0;
 let answered = false;
 
-//update progress bar
+/* 
+    HELPER FUNCTIONS
+*/
+function switchPage(hidePage,showPage) {
+    hidePage.classList.add("hide");
+    showPage.classList.remove("hide");
+}
+
+function toggleHide(element) {
+    element.classList.toggle("hide");
+}
+
+function getCurrentQuestion(index) {
+    return quizData[index].questions[questionIndexCounter - 1]
+}
+
  function updateProgressBar() {
     progressBar.style.width = `${(questionIndexCounter * 100)/10}%`;
 };
 
-// compare actual answer to the correct answer
-questionOptionArray.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        let userAnswer = btn.querySelector(".question__opt-txt").textContent;
-        let letter = btn.querySelector(".question__button")
-        let correct = quizData[chosenSubjectIndex].questions[questionIndexCounter - 1].answer;
-        let validationIcon = btn.querySelector(".validation-icon");
-        console.log(correct);
+/* 
+    THEME FUNCTIONS
+*/
+function applyTheme(mode) {
+  const isLight = mode === 'light';
 
-        if (userAnswer == correct) {
-            btn.classList.add("correct");
-            btn.classList.remove("wrong");
-            letter.classList.add("correct");
-            letter.classList.remove("wrong");
-            validationIcon.classList.remove("hide");
-            validationIcon.src = "images/icon-correct.svg";
-            correctCounter++;
-        } else {
-            btn.classList.add("wrong");
-            btn.classList.remove("correct");
-            letter.classList.add("wrong");
-            letter.classList.remove("correct");
-            validationIcon.classList.remove("hide");
-            validationIcon.src = "images/icon-incorrect.svg";
-            showCorrectAnswer(correct);
-        } 
-        questionOptionArray.forEach(b => b.disabled = true);
-        answered = true;
-        notAnsweredError.classList.add("hide");
-    });
-});
-
-// show correct answer after answering
-function showCorrectAnswer(correct) {
-    questionOptionArray.forEach((btn) => {
-        let optionText = btn.querySelector(".question__opt-txt").textContent
-        let letter = btn.querySelector(".question__button")
-        let validationIcon = btn.querySelector(".validation-icon");
-        if (optionText == correct){
-            btn.classList.add("correct");
-            validationIcon.classList.remove("hide");
-            validationIcon.src = "images/icon-correct.svg";
-            letter.classList.add("correct");
-        }
-    });
+  setThemeClasses(isLight); 
+  updateIconsAndPills(isLight);
+  themeSwitch.checked = isLight;
+  localStorage.setItem('theme', mode); // remember preference
 }
 
-// Remove validation
+// Apply .light or .dark class to every themed element
+function setThemeClasses(isLight) {
+  flipOne(document.body, isLight);
+  flipOne(completeSummary, isLight);
+  menuOptionArray.forEach(element => flipOne(element, isLight));
+  questionOptionArray.forEach(element => flipOne(element, isLight));
+}
+
+// Flip classes on ONE element
+function flipOne(element, isLight) {
+  element.classList.toggle('light', isLight);
+  element.classList.toggle('dark',  !isLight);
+}
+
+// Swap icons and slider
+function updateIconsAndPills(isLight) {
+  sunIcon.src  = `images/icon-sun-${isLight ? 'dark' : 'light'}.svg`;
+  moonIcon.src = `images/icon-moon-${isLight ? 'dark' : 'light'}.svg`;
+
+  sliderLigt.classList.toggle('hide', !isLight);
+  sliderDark.classList.toggle('hide',  isLight);
+}
+
+// Save and load theme if the page is refresed or exited
+const savedTheme = localStorage.getItem('theme');
+applyTheme(savedTheme === 'light' ? 'light' : 'dark');
+   
+// Listen for user toggle
+themeSwitch.addEventListener('change', () => {
+  applyTheme(themeSwitch.checked ? 'light' : 'dark');
+});
+
+/*
+    QUIZ RENDERING FUNCTIONS
+*/
+// Load questions after clicking the specific subject
+function loadSubjectQuestion(index) {
+    updateQuestionText(index);
+    populateAnswerOptions(index);
+}
+
+// Sets the current question text and number
+function updateQuestionText(index) {
+    questionText.textContent = getCurrentQuestion(index).question;
+    questionIndex.textContent = questionIndexCounter;
+}
+
+// Fills in A,B,C,D option texts
+function populateAnswerOptions(index) {
+    let fetchedOptionArray = [];
+    fetchedOptionArray = getCurrentQuestion(index).options;
+
+    optionTextArray.forEach((option, i) => {
+        option.textContent = fetchedOptionArray[i];
+    })
+}
+
+function loadHeaderData(index) {
+    subjectText.innerHTML = quizData[index].title;
+    subjectIcon.src = quizData[index].icon;
+}
+
+// Remove green and red borders that show correct and wrong answer
 function removeValidation() {
     questionOptionArray.forEach((btn) => {
         let validationIcon = btn.querySelector(".validation-icon");
@@ -119,18 +161,97 @@ function removeValidation() {
     });
 }
 
-//store data in the variable quizData
-fetch("data.json").then((response) => {
-    if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-}).then((data) => {
-    quizData = data.quizzes;
-    console.log("Quiz data loaded:", quizData);
-}).catch((error) => {
-    console.error("Error loading quiz data:", error);
-    alert("Failed to load Quiz data. Please try again.");
+/*
+    FUNCTIONS THAT HANDLES THE ANSWER
+*/
+// Compare actual answer to the correct answer
+function handleAnswerClick(btn) {
+    let userAnswer = btn.querySelector(".question__opt-txt").textContent;
+    let correct = getCurrentQuestion(chosenSubjectIndex).answer;
+    let isCorrect = userAnswer === correct;
+
+    if (btn.disabled) return;
+    
+    showAnswerFeedback(btn, isCorrect, correct);
+    updateQuizStateAfterAnswer(isCorrect);
+
+    questionOptionArray.forEach(b => b.disabled = true);
+}
+
+// Highlights the answer Red or Green
+function showAnswerFeedback(btn, isCorrect, correctAnswer) {
+    let letter = btn.querySelector(".question__button")
+    let validationIcon = btn.querySelector(".validation-icon");
+
+    if (btn.disabled) return;
+
+    if (isCorrect) {
+        btn.classList.add("correct");
+        btn.classList.remove("wrong");
+        letter.classList.add("correct");
+        letter.classList.remove("wrong");
+        validationIcon.classList.remove("hide");
+        validationIcon.src = "images/icon-correct.svg";
+    } else {
+        btn.classList.add("wrong");
+        btn.classList.remove("correct");
+        letter.classList.add("wrong");
+        letter.classList.remove("correct");
+        validationIcon.classList.remove("hide");
+        validationIcon.src = "images/icon-incorrect.svg";
+        showCorrectAnswer(correctAnswer);
+    } 
+}
+
+// Show correct answer after answering
+function showCorrectAnswer(correctAnswer) {
+    questionOptionArray.forEach((btn) => {
+        let optionText = btn.querySelector(".question__opt-txt").textContent
+        let letter = btn.querySelector(".question__button")
+        let validationIcon = btn.querySelector(".validation-icon");
+        if (optionText == correctAnswer){
+            btn.classList.add("correct");
+            validationIcon.classList.remove("hide");
+            validationIcon.src = "images/icon-correct.svg";
+            letter.classList.add("correct");
+        }
+    });
+}
+
+function updateQuizStateAfterAnswer(isCorrect) {
+    answered = true;
+    notAnsweredError.classList.add("hide");
+    if (isCorrect) correctCounter++;
+}
+
+/*
+    QUIZ NAVIGATION FUNCTIONS
+*/
+
+function handleEmptySubmit() {
+    notAnsweredError.classList.remove("hide");
+}
+
+function handleFinalSubmit() {
+    switchPage(questionPage, completePage);
+    finalScore.textContent = correctCounter;
+    answered = false;
+    notAnsweredError.classList.add("hide");
+}
+
+function handleNextQuestion() {
+    questionIndexCounter++;
+    loadSubjectQuestion(chosenSubjectIndex);
+    answered = false;
+    notAnsweredError.classList.add("hide");
+}
+
+/*
+    EVENT LISTENERS
+*/
+
+questionOptionArray.forEach((btn) => {
+    btn.addEventListener("click", () => handleAnswerClick(btn));
 });
 
 // load data file after choosing a subject
@@ -148,17 +269,11 @@ menuOptionArray.forEach((btn, index) => {
 // go to next question
 submitAnswerBtn.addEventListener("click", () => {
     if (!answered) {
-        notAnsweredError.classList.remove("hide");
+        handleEmptySubmit();
     } else if (questionIndexCounter == 10) {
-        switchPage(questionPage, completePage);
-        finalScore.textContent = correctCounter;
-        answered = false;
-        notAnsweredError.classList.add("hide");
+        handleFinalSubmit();
     } else {
-        questionIndexCounter++;
-        loadSubjectQuestion(chosenSubjectIndex);
-        answered = false;
-        notAnsweredError.classList.add("hide");
+        handleNextQuestion();
     }
     removeValidation();
     updateProgressBar();
@@ -173,79 +288,16 @@ completeBtn.addEventListener("click", () => {
     updateProgressBar();
 });
 
-// load subject data to question page after clicking the specific subject
-function loadSubjectQuestion(index) {
-    questionText.textContent = quizData[index].questions[(questionIndexCounter - 1)].question;
-    questionIndex.textContent = questionIndexCounter;
-
-    let fetchedOptionArray = [];
-    fetchedOptionArray = quizData[index].questions[(questionIndexCounter - 1)].options;
-
-    optionTextArray.forEach((option, i) => {
-        option.textContent = fetchedOptionArray[i];
-    })
-    
-}
-
-// load the header data from json file
-function loadHeaderData(index) {
-    subjectText.innerHTML = quizData[index].title;
-    subjectIcon.src = quizData[index].icon;
-}
-
-// Toggle between pages
-function switchPage(hidePage,showPage) {
-    hidePage.classList.add("hide");
-    showPage.classList.remove("hide");
-}
-
-//add and remove hide class
-function toggleHide(element) {
-    element.classList.toggle("hide");
-}
-
-
-
-/* 
-   main theme function
-*/
-function applyTheme(mode) {
-  const isLight = mode === 'light';
-
-  setThemeClasses(isLight); 
-  updateIconsAndPills(isLight);
-  themeSwitch.checked = isLight;
-  localStorage.setItem('theme', mode); // remember preference
-}
-
-//apply .light / .dark to every themed element
-function setThemeClasses(isLight) {
-  flipOne(document.body, isLight);
-  flipOne(completeSummary, isLight);
-  menuOptionArray.forEach(element => flipOne(element, isLight));
-  questionOptionArray.forEach(element => flipOne(element, isLight));
-}
-
-//flip classes on ONE element
-function flipOne(element, isLight) {
-  element.classList.toggle('light', isLight);
-  element.classList.toggle('dark',  !isLight);
-}
-
-// swap icons and slider
-function updateIconsAndPills(isLight) {
-  sunIcon.src  = `images/icon-sun-${isLight ? 'dark' : 'light'}.svg`;
-  moonIcon.src = `images/icon-moon-${isLight ? 'dark' : 'light'}.svg`;
-
-  sliderLigt.classList.toggle('hide', !isLight);
-  sliderDark.classList.toggle('hide',  isLight);
-}
-
-//Save and load theme if the page is refresed or exited
-const savedTheme = localStorage.getItem('theme');
-applyTheme(savedTheme === 'light' ? 'light' : 'dark');
-   
-// listen for user toggle
-themeSwitch.addEventListener('change', () => {
-  applyTheme(themeSwitch.checked ? 'light' : 'dark');
+//store data in the variable quizData
+fetch("data.json").then((response) => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+}).then((data) => {
+    quizData = data.quizzes;
+    console.log("Quiz data loaded:", quizData);
+}).catch((error) => {
+    console.error("Error loading quiz data:", error);
+    alert("Failed to load Quiz data. Please try again.");
 });
