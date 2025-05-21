@@ -397,6 +397,14 @@ main {
     font-weight: var(--fw-500);
 }
 
+.question__button.correct {
+    background-color: var(--clr-green100);
+}
+
+.question__button.wrong {
+    background-color: var(--clr-red500);
+}
+
 .question__submit {
     text-align: center;
 }

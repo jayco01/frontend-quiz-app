@@ -37,6 +37,7 @@ const dText = document.getElementById("d-text");
 const validationIconArray = document.querySelectorAll(".validation-icon");
 const progressBar = document.querySelector(".question__progress-bar");
 const notAnsweredError = document.getElementById("question__submit-error");
+const quesetionBtnArray = document.querySelectorAll(".question__button");
 
 // Complete Page variables
 const completeBtn = document.querySelector(".complete__again");
@@ -59,6 +60,7 @@ let answered = false;
 questionOptionArray.forEach((btn) => {
     btn.addEventListener("click", () => {
         let userAnswer = btn.querySelector(".question__opt-txt").textContent;
+        let letter = btn.querySelector(".question__button")
         let correct = quizData[chosenSubjectIndex].questions[questionIndexCounter - 1].answer;
         let validationIcon = btn.querySelector(".validation-icon");
         console.log(correct);
@@ -66,12 +68,16 @@ questionOptionArray.forEach((btn) => {
         if (userAnswer == correct) {
             btn.classList.add("correct");
             btn.classList.remove("wrong");
+            letter.classList.add("correct");
+            letter.classList.remove("wrong");
             validationIcon.classList.remove("hide");
             validationIcon.src = "images/icon-correct.svg";
             correctCounter++;
         } else {
             btn.classList.add("wrong");
             btn.classList.remove("correct");
+            letter.classList.add("wrong");
+            letter.classList.remove("correct");
             validationIcon.classList.remove("hide");
             validationIcon.src = "images/icon-incorrect.svg";
             showCorrectAnswer(correct);
@@ -86,11 +92,13 @@ questionOptionArray.forEach((btn) => {
 function showCorrectAnswer(correct) {
     questionOptionArray.forEach((btn) => {
         let optionText = btn.querySelector(".question__opt-txt").textContent
+        let letter = btn.querySelector(".question__button")
         let validationIcon = btn.querySelector(".validation-icon");
         if (optionText == correct){
             btn.classList.add("correct");
             validationIcon.classList.remove("hide");
             validationIcon.src = "images/icon-correct.svg";
+            letter.classList.add("correct");
         }
     });
 }
@@ -98,11 +106,16 @@ function showCorrectAnswer(correct) {
 // Remove validation
 function removeValidation() {
     questionOptionArray.forEach((btn) => {
+        let validationIcon = btn.querySelector(".validation-icon");
+        let letter = btn.querySelector(".question__button");
+
         btn.classList.remove("correct");
         btn.classList.remove("wrong");
-        let validationIcon = btn.querySelector(".validation-icon");
+        letter.classList.remove("correct");
+        letter.classList.remove("wrong");
         validationIcon.classList.add("hide");
         questionOptionArray.forEach(b => b.disabled = false);
+        
     });
 }
 
