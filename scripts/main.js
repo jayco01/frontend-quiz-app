@@ -39,10 +39,17 @@ const progressBar = document.querySelector(".question__progress-bar");
 const notAnsweredError = document.getElementById("question__submit-error");
 const quesetionBtnArray = document.querySelectorAll(".question__button");
 
+//API Variables
+const chatInput = document.getElementById('chat-input');
+const sendChatBtn = document.getElementById('send-chat-btn');
+const chatHistoryDiv = document.getElementById('chat-history');
+let conversationHistory = []; //To maintain conversation context
+
 // Complete Page variables
 const completeBtn = document.querySelector(".complete__again");
 const completeSummary = document.querySelector(".complete__summary");
 const finalScore = document.getElementById("final-score");
+
 
 // dynamic variables
 let quizData = [];
@@ -304,4 +311,70 @@ fetch("data.json").then((response) => {
 }).catch((error) => {
     console.error("Error loading quiz data:", error);
     alert("Failed to load Quiz data. Please try again.");
+});
+
+
+/*
+    API FUNCTIONS
+*/
+
+sendChatBtn.addEventListener('click', async () => {
+    const userMessage = chatInput.value.trim();
+    if (userMessage === '') return;
+
+    // Display user's message
+    appendMessage(userMessage, 'user-message');
+    chatInput.value = ''; // Clear input
+
+    const loadingMessage = appendMessage('Thinking...', 'bot-message loading');
+
+    try {
+        const response = await fetch('/.netlify/functions/gemini-chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                prompt: userMessage,
+                history: conversationHistory // Send the full history
+            }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const botResponse = data.text;
+
+        loadingMessage.remove();
+        appendMessage(botResponse, 'bot-message');
+
+        // Update conversation history for the next turn
+        conversationHistory.push({ role: "user", parts: [{ text: userMessage }] });
+        conversationHistory.push({ role: "model", parts: [{ text: botResponse }] });
+
+    } catch (error) {
+        console.error('Error fetching AI response:', error);
+        // Remove loading indicator
+        loadingMessage.remove();
+        appendMessage('Error: Could not get a response. Try again later.', 'error-message');
+    }
+});
+
+function appendMessage(message, className) {
+    const messageElement = document.createElement('div');
+    messageElement.textContent = message;
+    messageElement.classList.add('chat-message', className);
+    chatHistoryDiv.appendChild(messageElement);
+    chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight;
+    return messageElement; // Return element to allow removal of loading message
+}
+
+// Allow pressing Enter to send message
+chatInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        sendChatBtn.click();
+    }
 });
