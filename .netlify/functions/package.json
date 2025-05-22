@@ -1,0 +1,12 @@
+{
+  "name": "gemini-functions",
+  "version": "1.0.0",
+  "description": "Netlify functions for Gemini API",
+  "main": "gemini-chat.js",
+  "dependencies": {
+    "@google/generative-ai": "^0.14.1"
+  },
+  "scripts": {
+    "start": "netlify functions:serve"
+  }
+}
