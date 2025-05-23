@@ -11,3 +11,5 @@ frontend-quiz-app-figma/
 notes.txt
 
 .vercel
+
+node_modules/
