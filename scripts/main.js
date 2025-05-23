@@ -326,7 +326,7 @@ sendChatBtn.addEventListener('click', async () => {
     appendMessage(userMessage, 'user-message');
     chatInput.value = ''; // Clear input
 
-    const loadingMessage = appendMessage('Thinking...', 'bot-message loading');
+    const loadingMessage = appendMessage('Thinking...', 'bot-message-loading');
 
     try {
         const response = await fetch('/api/gemini-chat', {

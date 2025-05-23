@@ -6,5 +6,12 @@
   },
   "scripts": {
     "start": "some command" 
+  },
+
+
+  "engines" : { 
+    "node" : "22.x" 
   }
+
+
 }

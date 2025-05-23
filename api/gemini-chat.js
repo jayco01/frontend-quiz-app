@@ -39,7 +39,3 @@ export default async function handler(req, res) {
     res.status(500).json({ error: "Failed to get response from AI. Please try again.", details: error.message });
   }
 }
-
-export const config = {
-  runtime: 'nodejs18',
-}
