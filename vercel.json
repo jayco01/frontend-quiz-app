@@ -2,7 +2,7 @@
   "version": 2,
   "functions": {
     "api/gemini-chat.js": {
-      "runtime": "nodejs18.x"
+      "runtime": "nodejs"
     }
   }
 }
