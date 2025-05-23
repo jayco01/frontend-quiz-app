@@ -637,7 +637,6 @@ main {
         flex: 1;
         max-height: 29.5rem;
         width: 29.0625rem;
-        /* gap: var(--spacing-184px) */
         justify-content: space-between;
     }
 
@@ -687,7 +686,8 @@ main {
     position: absolute;
     right: 1rem;
     bottom: 1rem;
-    border: 0.7rem solid var(--clr-blue300);
+    /* border: 0.7rem solid var(--clr-blue300); */
+    background-color: var(--clr-blue850);
     padding: 0.625rem;
     max-width: 50rem;
     margin: 1.25rem auto auto;
@@ -699,6 +699,7 @@ main {
 #chat-history {
     overflow-y: auto;
     border: 0.3rem solid var(--clr-blue100);
+    background-color: var(--clr-blue100);
     padding: 0.625rem;
     margin-bottom: 0.625rem;
     border-radius: clamp(0.75rem, 2.62vw, 1.5rem);
