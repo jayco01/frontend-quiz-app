@@ -329,7 +329,7 @@ sendChatBtn.addEventListener('click', async () => {
     const loadingMessage = appendMessage('Thinking...', 'bot-message loading');
 
     try {
-        const response = await fetch('/.netlify/functions/gemini-chat', {
+        const response = await fetch('/api/gemini-chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
