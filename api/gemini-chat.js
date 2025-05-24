@@ -13,7 +13,23 @@ export default async function handler(req, res) {
 
   try {
     const genAI = new GoogleGenerativeAI(API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    const systemInstruction = {
+      role: "system",
+      parts: [{ text: `
+        You are the "Quiz Helper Bot" for an interactive frontend quiz website.
+        The quiz covers topics like HTML, CSS, JavaScript, and Accessibility.
+        Your main goal is to assist users with questions specifically related to the quiz content.
+        If a user asks a question unrelated to the quiz topics (HTML, CSS, JavaScript, Accessibility),
+        politely state that you are here to help with the quiz and cannot answer unrelated questions.
+        Keep your answers helpful, concise, and focused on the quiz material.
+      `}]
+    };
+
+    const model = genAI.getGenerativeModel({ 
+      model: "gemini-1.5-flash",
+      systemInstruction: systemInstruction,
+     });
 
     const { prompt, history } = req.body;
 
