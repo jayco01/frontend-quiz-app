@@ -1,4 +1,4 @@
-@import url(styles.css);
+@import url('styles.css');
 body {
     position: relative;
 }
@@ -30,7 +30,7 @@ body {
 .chatbot-title {
     font-size: 1rem;
     font-weight: 500;
-    color: white;
+    color: var(--clr-white);
 }
 
 #exit-chatbot {
@@ -38,7 +38,7 @@ body {
 }
 
 #minimize-chatbot {
-    background-color: white;
+    background-color: var(--clr-white);
     border: none;
     width: 2rem;
     border-radius: clamp(0.75rem, 2.62vw, 1.5rem);
