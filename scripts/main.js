@@ -378,3 +378,17 @@ chatInput.addEventListener('keypress', (event) => {
         sendChatBtn.click();
     }
 });
+
+const showChatBotWrapper = document.getElementById("show-chatbot-wrapper");
+const showChatBot = document.getElementById("show-chatbot");
+const chatbot = document.getElementById("chatbot-container");
+const exitChatBot = document.getElementById("exit-chatbot");
+
+showChatBot.addEventListener("click", () => {
+    switchPage(showChatBotWrapper, chatbot);
+});
+
+exitChatBot.addEventListener("click", () => {
+    switchPage(chatbot, showChatBotWrapper);
+})
+
