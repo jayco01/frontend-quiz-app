@@ -53,6 +53,7 @@ body {
     flex-grow: 1;
     min-height: 5rem;
     min-width: 15rem;
+    max-height: 20rem;
 }
 
 .chat-message {
