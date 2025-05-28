@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="styles/chatbot.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="scripts/main.js" defer></script>
   <title>Frontend quiz app</title>
 </head>
@@ -158,16 +159,16 @@
   </div>
   
 </section> <!--closes complete-->
-      <div class="hide" id="show-chatbot-wrapper">
+      <div class="" id="show-chatbot-wrapper">
         <button id="show-chatbot">Ask A.I. for help</button>
       </div>
-      <div class="" id="chatbot-container">
+      <div class="hide" id="chatbot-container">
         <div class="chatbot-title-wrapper">
         <h3 class="chatbot-title">Quiz Helper Bot</h3>
         <button id="exit-chatbot">X</button>
         </div>
         <div id="chat-history"></div>
-        <input type="text" id="chat-input" placeholder="Ask about the quiz..." />
+        <textarea type="text" id="chat-input" placeholder="Ask about the quiz..." rows="3"></textarea>
         <button id="send-chat-btn">Ask</button>
       </div>
   <!-- Quiz completed end -->

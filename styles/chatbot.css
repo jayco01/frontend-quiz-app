@@ -68,6 +68,7 @@ body {
     margin-left: auto;
     width: fit-content;
     max-width: 90%;
+    white-space: pre-wrap;
 }
 
 .bot-message {
@@ -99,6 +100,10 @@ body {
     padding: 0.5rem;
     border: 0.1rem solid var(--clr-blue100);
     border-radius: 0.313rem;
+    resize: vertical;
+    overflow-y: auto;
+    box-sizing: border-box;
+    resize: none;
 }
 
 #send-chat-btn {

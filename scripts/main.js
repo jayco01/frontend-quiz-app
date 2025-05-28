@@ -365,16 +365,23 @@ sendChatBtn.addEventListener('click', async () => {
 
 function appendMessage(message, className) {
     const messageElement = document.createElement('div');
-    messageElement.textContent = message;
     messageElement.classList.add('chat-message', className);
+
+    if(className === 'bot-message' && window.marked && typeof window.marked.parse === 'function') {
+        messageElement.innerHTML = marked.parse(message);
+    } else {
+        messageElement.textContent = message;
+    }
+    
     chatHistoryDiv.appendChild(messageElement);
     chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight;
     return messageElement; // Return element to allow removal of loading message
 }
 
 // Allow pressing Enter to send message
-chatInput.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
+chatInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && event.ctrlKey) {
+        event.preventDefault();
         sendChatBtn.click();
     }
 });
