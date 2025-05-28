@@ -60,7 +60,6 @@ body {
     padding: 0.313rem;
     margin-bottom: 0.313rem;
     border-radius: 0.313rem;
-
 }
 
 .user-message {
@@ -77,6 +76,7 @@ body {
     margin-right: auto;
     width: fit-content;
     max-width: 90%;
+    white-space: pre-wrap;
 }
 
 .loading {
