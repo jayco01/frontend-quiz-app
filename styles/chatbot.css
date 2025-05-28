@@ -35,14 +35,16 @@ body {
 
 #exit-chatbot {
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-radius: clamp(0.75rem, 2.62vw, 1.5rem);
+    font-weight: 900;
+    color: var(--clr-white);
 }
 
-#minimize-chatbot {
-    background-color: var(--clr-white);
-    border: none;
-    width: 2rem;
-    border-radius: clamp(0.75rem, 2.62vw, 1.5rem);
-}
+/* #minimize-chatbot {
+
+} */
 
 #chat-history {
     overflow-y: auto;
@@ -142,6 +144,26 @@ body {
 
 #show-chatbot-wrapper:hover {
     transform: scale(1.1);
+}
+
+.bot-message pre {
+    background-color: var(--clr-blue850);
+    color: var(--clr-green100);
+    padding: 1rem;
+    border: 1px solid var(--clr-green100);
+    border-radius: 6px;
+    overflow: auto;
+    white-space: pre-wrap;
+    margin: 0.5rem 0;        
+    font-size: 0.9rem;
+}
+
+/* Style for the <code> tag inside the <pre> tag */
+.bot-message pre code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
 }
 
 .hide {
