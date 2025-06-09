@@ -75,6 +75,24 @@
     --fluid-spacing-16x24: clamp(var(--spacing-16px), 2.62vw, var(--spacing-24px))
 }
 
+/**
+ * ----------------------------------------
+ * animation tracking-in-contract
+ * ----------------------------------------
+ */
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
 
 
 body {
@@ -198,6 +216,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-8px);
+
+    animation: tracking-in-contract 0.8s cubic-bezier(0.550, 0.055, 0.675, 0.190) both;
 }
 
 .menu__title h1 {
