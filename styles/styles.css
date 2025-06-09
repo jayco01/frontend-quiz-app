@@ -245,6 +245,11 @@ main {
     cursor: pointer;
 }
 
+.menu__option:hover, .question__option:hover {
+    transform: scale(1.1);
+}
+
+
 .menu__option.dark, .question__option.dark {
     background-color: var(--clr-blue850);
     color: var(--clr-white);

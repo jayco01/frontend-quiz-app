@@ -43,6 +43,10 @@ body {
     color: var(--clr-white);
 }
 
+#exit-chatbot:hover {
+    transform: scale(1.1);
+}
+
 /* #minimize-chatbot {
 
 } */
@@ -118,6 +122,10 @@ body {
     cursor: pointer;
     margin-top: 0.5rem;
     font-weight: 900;
+}
+
+#send-chat-btn:hover {
+    transform: scale(1.1);
 }
 
 #show-chatbot-wrapper {
