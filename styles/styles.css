@@ -249,7 +249,6 @@ main {
     transform: scale(1.1);
 }
 
-
 .menu__option.dark, .question__option.dark {
     background-color: var(--clr-blue850);
     color: var(--clr-white);
@@ -430,6 +429,10 @@ main {
     width: 100%;
     box-sizing: border-box;
     cursor: pointer;
+}
+
+.question__submit-btn:hover, .complete__again-btn:hover {
+    transform: scale(1.05);
 }
 
 .question__progress {
