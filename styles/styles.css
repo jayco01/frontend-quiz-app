@@ -120,7 +120,6 @@ body {
     flex-direction: column;
     align-items: center;
     
-    
     min-height: 4.5rem;
     box-sizing: border-box;
 }
@@ -294,7 +293,7 @@ main {
 }
 
 .menu__option:hover, .question__option:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .menu__option.dark, .question__option.dark {
