@@ -285,7 +285,6 @@ main {
     flex-direction: row;
     align-items: center;
     gap: var(--spacing-16px);
-    font-weight: var(--fw-500);
     box-shadow: 0px 16px 40px 0px #313E5124;
     box-sizing: border-box;
     border: 3px solid transparent;
@@ -297,14 +296,21 @@ main {
 }
 
 .menu__option.dark, .question__option.dark {
-    background-color: var(--clr-blue850);
+    background-color: #3b4d6680;
     color: var(--clr-white);
+}
+
+.menu__option.dark:hover, .question__option.dark:hover {
+    background-color: var(--clr-blue850);
+    transform: scale(1.05);
 }
 
 .menu__option.light, .question__option.light {
     background-color: var(--clr-white);
     color: var(--clr-blue900);
 }
+
+
 
 .validation-icon {
     width: 100%;

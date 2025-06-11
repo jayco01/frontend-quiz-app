@@ -51,7 +51,7 @@ const completeSummary = document.querySelector(".complete__summary");
 const finalScore = document.getElementById("final-score");
 
 
-// dynamic variables
+// Dynamic variables
 let quizData = [];
 let questionIndexCounter = 1; //counts what question the user is currently in
 let chosenSubjectIndex; //what subject did the user choose
