@@ -499,7 +499,6 @@ main {
     background-color: var(--clr-white);
 }
 
-
 .question__progress-bar {
     height: 100%;
     background-color: var(--clr-purple600);
@@ -618,7 +617,6 @@ main {
 }
 
 
-
 @media (min-width: 600px) and (max-width: 1079px) {
     body.dark {
         background-image: 
@@ -651,7 +649,6 @@ main {
     .complete__content {
         gap: var(--spacing-64px);
     }
-
 
 }
 
