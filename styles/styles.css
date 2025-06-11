@@ -75,15 +75,51 @@
     --fluid-spacing-16x24: clamp(var(--spacing-16px), 2.62vw, var(--spacing-24px))
 }
 
+/**
+ * ----------------------------------------
+ * animation tracking-in-contract
+ * ----------------------------------------
+ */
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
 
+/**
+ * ----------------------------------------
+ * animation gradient
+ * ----------------------------------------
+ */
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 
 body {
-    background-repeat: no-repeat;
+	height: 100vh;
+    background-color: var(--clr-blue900);
+
     font-family: var(--font-family-rubik);
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    
     
     min-height: 4.5rem;
     box-sizing: border-box;
@@ -91,14 +127,24 @@ body {
 
 body.dark {
     color: var(--clr-white);
-    background-color: var(--clr-blue900);
-    background-image: url("../images/pattern-background-mobile-dark.svg");
+    
+    background:
+        url("../images/pattern-background-mobile-dark.svg"),
+        linear-gradient(-45deg, var(--clr-purple600), #2d3949, #313e51, var(--clr-blue500));
+	background-size: 400% 400%;
+    background-repeat: no-repeat, no-repeat;
+	animation: gradient 15s ease infinite;
 }
 
 body.light {
     color: var(--clr-blue900);
-    background-color: var(--clr-grey50);
-    background-image: url("../images/pattern-background-mobile-light.svg");
+
+ background-image: 
+        url("../images/pattern-background-desktop-light.svg"),
+        linear-gradient(-45deg, var(--clr-purple600), var(--clr-purple100), var(--clr-white), var(--clr-blue500));
+	background-size: 400% 400%;
+    background-repeat: no-repeat, no-repeat;
+	animation: gradient 15s ease infinite;
 }
 
 header {
@@ -198,6 +244,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-8px);
+
+    animation: tracking-in-contract 0.8s cubic-bezier(0.550, 0.055, 0.675, 0.190) both;
 }
 
 .menu__title h1 {
@@ -573,11 +621,15 @@ main {
 
 @media (min-width: 600px) and (max-width: 1079px) {
     body.dark {
-        background-image: url("../images/pattern-background-tablet-dark.svg");
+        background-image: 
+            url("../images/pattern-background-tablet-dark.svg"),
+            linear-gradient(-45deg, var(--clr-purple600), #2d3949, #313e51, var(--clr-blue500));
     }
 
     body.light {
-        background-image: url("../images/pattern-background-tablet-light.svg");
+        background-image: 
+            url("../images/pattern-background-desktop-light.svg"),
+            linear-gradient(-45deg, var(--clr-purple600), var(--clr-purple100), var(--clr-white), var(--clr-blue500));
     }
 
     header {
@@ -605,11 +657,15 @@ main {
 
 @media (min-width: 1080px) {
     body.dark {
-        background-image: url("../images/pattern-background-desktop-dark.svg");
+        background-image: 
+            url("../images/pattern-background-desktop-dark.svg"),
+            linear-gradient(-45deg, var(--clr-purple600), #2d3949, #313e51, var(--clr-blue500));
     }
 
     body.light {
-        background-image: url("../images/pattern-background-desktop-light.svg");
+         background-image: 
+            url("../images/pattern-background-desktop-light.svg"),
+            linear-gradient(-45deg, var(--clr-purple600), var(--clr-purple100), var(--clr-white), var(--clr-blue500));
     }
 
     header {
