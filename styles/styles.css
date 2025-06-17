@@ -306,11 +306,13 @@ main {
 }
 
 .menu__option.light, .question__option.light {
-    background-color: var(--clr-white);
+    background-color: rgba(255, 255, 255, 0.619);
     color: var(--clr-blue900);
 }
 
-
+.menu__option p {
+    text-shadow: 0.1rem 0.2rem 1rem var(--clr-blue950);
+}
 
 .validation-icon {
     width: 100%;
