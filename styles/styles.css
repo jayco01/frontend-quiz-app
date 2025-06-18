@@ -201,7 +201,6 @@ header {
     min-width: 2.5rem;
 }
 
-
 .slider--light {
     background-color: var(--clr-white);
     width: clamp(0.75rem,2.2vw,1.25rem);
@@ -311,7 +310,8 @@ main {
 }
 
 .menu__option p {
-    text-shadow: 0.1rem 0.2rem 1rem var(--clr-blue950);
+    /* text-shadow: 0.1rem 0.2rem 1rem var(--clr-blue950); */
+    font-weight: 700;
 }
 
 .validation-icon {
@@ -327,7 +327,6 @@ main {
 .wrong {
     border: 3px solid var(--clr-red500);
 }
-
 
 .menu__option-icon {
     display: flex;
